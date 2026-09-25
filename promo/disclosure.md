@@ -9,5 +9,5 @@ SCAM is a meme token associated with the Smart Contract Attack Museum, an educat
 - Disclose current holdings and other material conflicts accurately.
 - Do not say “creator holds zero” without a fresh on-chain verification and appropriate scope.
 - Do not describe the museum as an automated scanner, audit firm, or live scam detector.
-- Do not promote an unfunded bounty or unimplemented token utility as active.
+- Do not promote an unfunded bounty or any unimplemented token utility as active.
 - Never request private keys, seed phrases, or API credentials.

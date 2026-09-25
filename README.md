@@ -26,6 +26,7 @@ See [the product scope](docs/feature-spec.md) for the exact available features, 
 - The archive contains educational descriptions of common vulnerability patterns. A description is not proof that any named live project is exploitable.
 - Contract and site submissions are prepared as GitHub issues. This repository is public, so visitors can review and submit them with a GitHub account.
 - There is no live token scanner, active bounty pool, or operational 60/40 creator-fee allocation ledger. Do not advertise those as available until the implementation and public evidence exist.
+- The interactive gallery has three fictional puzzles. Holding at least 1 SCAM unlocks one optional bonus exhibit through a read-only Phantom wallet balance check. No signature, transfer, or transaction is requested; this client-side pass is not secure access control or a financial reward.
 
 ## Submit a research candidate or issue
 
@@ -35,14 +36,14 @@ Do not use public issues to disclose weaponizable details about an unpatched liv
 
 ## Launch scripts
 
-These scripts can create irreversible on-chain transactions. The launch command supports a dry run and requires an explicit confirmation flag before broadcasting.
+These are legacy owner tools, separate from the museum experience. The original token is already live. Running `launch.ts` creates a new token mint and can spend SOL; it does not manage the existing mint. Do not run it for routine site updates. `burn.ts` permanently burns tokens and must not be run without independently verifying the wallet, mint, and amount.
 
 ```sh
 cd launch
 npm ci
 export PUMPFUN_API_KEY=...    # PumpPortal API key; keep in a local environment only
 export SITE_URL=https://scam-museum-snowy.vercel.app
-npx tsx launch.ts --dev-buy 0.01 --dry-run
+npx tsx launch.ts --dev-buy 0.01 --dry-run  # Preview only; do not launch another token.
 ```
 
 Only the token owner should run launch or burn operations after reviewing the code, wallet, mint, fee, and network. Do not paste private keys or API keys into issues, chat, or source files. The public `site/launch.json` is a launch record and must never contain secrets.

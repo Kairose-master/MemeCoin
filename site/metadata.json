@@ -1,8 +1,8 @@
 {
  "name": "SCAM",
  "symbol": "SCAM",
- "description": "SCAM is a meme token associated with an educational archive of smart-contract attack patterns and community research submissions. It does not automatically detect live scams or certify contracts. No intrinsic value or promised returns; the token can go to zero. The creator's initial launch buy was burned; the creator may hold tokens acquired separately.",
- "image": "https://scam-museum-snowy.vercel.app/assets/scam.png",
+ "description": "SCAM is the meme token for the SCAM Museum. Hold at least 1 SCAM to unlock an optional Curator Pass bonus exhibit on the site. The museum has fictional interactive security puzzles and manually reviewed community submissions, not live scam detection or audits. No intrinsic value or promised returns; the token can go to zero. The creator's initial launch buy was burned; the creator may hold tokens separately.",
+ "image": "https://scam-museum-snowy.vercel.app/assets/scam-meme-v1.png",
  "showName": true,
  "createdOn": "https://pump.fun",
  "website": "https://scam-museum-snowy.vercel.app"

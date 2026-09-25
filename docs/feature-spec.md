@@ -10,6 +10,8 @@ SCAM Museum is a public, educational archive for explaining general smart-contra
 
 | Capability | What a visitor can do | Current boundary |
 | --- | --- | --- |
+| Play the gallery | Answer three short, fictional smart-contract security puzzles and read the explanation. | Educational toy examples only; not a scanner, audit, or finding about a live project. |
+| Curator Pass | Connect a Phantom Solana wallet and check its balance of the SCAM mint. A balance of at least 1 SCAM reveals one optional bonus exhibit. | Read-only balance lookup; no message signature, token transfer, or transaction. The public address is sent to Solana's public RPC, not to a SCAM Museum backend. The bonus is a lightweight client-side experience, not protected confidential content or a financial reward. |
 | Read the archive | Read short educational summaries of common contract failure patterns. | Summaries are general examples, not verified findings against named deployed contracts. They are not an audit or safety rating. |
 | Submit a research lead | Fill a form that prepares a GitHub issue draft with network, deployment status, public source/address, question, and optional evidence. | A maintainer reviews it manually. GitHub account required to submit. No response time or publication is promised. |
 | Report a site/archive issue | Prepare a GitHub issue about a correction, broken link, accessibility problem, or site bug. | This is a public issue flow, not confidential vulnerability intake. |

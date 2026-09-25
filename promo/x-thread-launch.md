@@ -6,9 +6,11 @@
 
 3/ Community members can prepare a contract candidate or correction as a GitHub issue for manual review. A submission is a research lead, not a verdict. A GitHub account is required; public issues are not for confidential disclosures.
 
-4/ The initial launch buy was burned. The creator may hold tokens acquired separately, so current balances should be checked on-chain. No active bounty pool or operational 60/40 fee allocation is promised.
+4/ There’s an actual museum pass: hold 1 SCAM, connect Phantom, and a bonus exhibit opens after a read-only balance check. No signature or transaction. The core gallery stays open to everyone.
 
-5/ SCAM is a meme token with no intrinsic value or promised returns. It can lose all value. The museum is educational material, not financial advice, an audit, or a token recommendation.
+5/ The initial launch buy was burned. The creator may hold tokens acquired separately, so current balances should be checked on-chain. No active bounty pool or operational 60/40 fee allocation is promised.
+
+6/ SCAM is a meme token with no intrinsic value or promised returns. It can lose all value. The museum is educational material, not financial advice, an audit, or a token recommendation.
 
 Museum: https://scam-museum-snowy.vercel.app
 Pump.fun: https://pump.fun/coin/HvyZwwPJhPp5mxkr48SmGt7b5p2Tqrwzyjf6sT5JpMBV
