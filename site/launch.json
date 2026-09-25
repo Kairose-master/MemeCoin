@@ -1,4 +1,9 @@
 {
- "mint": null,
- "note": "발행 전 — launch.ts --confirm LAUNCH 가 이 파일을 채운다"
+ "mint": "HvyZwwPJhPp5mxkr48SmGt7b5p2Tqrwzyjf6sT5JpMBV",
+ "signature": "56gtN3pXyotNLcNS2biu1dcWxymL9J7gDVL3TGTo7XEN4rD42zkvumbxchva1QRJhY6VtvZQhJXmgugfBxWSryh2",
+ "ts": "2026-09-25T14:45:03.569Z",
+ "devBuySol": 0.01,
+ "uri": "https://scam-museum-snowy.vercel.app/metadata.json",
+ "feeWallet": "CWQy5upG3qpARJPXiqF7KP8o6Q4ddtoytsiykQK5BrYJ",
+ "sha256OfMetadata": "2f496d41f454959510d730372b70a1a9a5ec6b17630898aae41fb3b85aba729a"
 }
