@@ -2,7 +2,7 @@
 
 ## What it does
 
-Visitors can look up a Pump.fun coin with its Solana mint address and choose one of three community opinions: **Concerning**, **Need more info**, or **No concern found**. The page shows counts only for the rolling 30-day window. It accepts no comments and does not label a coin as a scam or safe. SCAM token ownership never changes a real-coin vote's weight.
+Visitors can search the active Pump.fun list by coin name or ticker, choose from current coins, or paste a mint address for direct lookup. They then choose one of three community opinions: **Concerning**, **Need more info**, or **No concern found**. The page shows counts only for the rolling 30-day window. It accepts no comments and does not label a coin as a scam or safe. SCAM token ownership never changes a real-coin vote's weight. Name/ticker search covers the active Pump.fun list; direct mint lookup remains available for coins outside that list.
 
 Coin names and images are fetched server-side from Pump.fun's `coins-v2/{mint}` endpoint. The backend accepts only valid mint addresses and verifies the mint against Pump.fun again before recording a vote.
 
@@ -38,6 +38,7 @@ Counts are unverified community sentiment, not a security review. A large “Con
 ## API
 
 - `GET /api/coin?mint=<address>` returns a small, sanitized Pump.fun coin profile.
+- `GET /api/coins?q=<name-or-ticker>` searches Pump.fun's active coin list; omit `q` to load the current list.
 - `GET /api/votes?mint=<address>&voterId=<local-id>` returns the 30-day counts and whether this browser has voted.
 - `POST /api/votes` accepts `{ "mint": "…", "vote": "concern|unclear|no_concern", "voterId": "…" }`.
 

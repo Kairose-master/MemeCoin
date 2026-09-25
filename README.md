@@ -9,7 +9,7 @@ A playful, educational museum for exploring smart-contract security patterns. Pu
 | Path | Purpose |
 | --- | --- |
 | `site/` | Static museum site, token links, research intake interface, and risk disclosures. |
-| `api/` | Vercel serverless API for Pump.fun coin lookup and anonymous community vote totals. |
+| `api/` | Vercel serverless API for Pump.fun active coin search, coin lookup, and anonymous vote totals. |
 | `launch/` | Owner-operated PumpPortal launch and SPL token burn scripts. Never commit secrets. |
 | `promo/` | English-only communication drafts and disclosure copy. |
 | `docs/` | Product scope, token facts, and submission/review boundaries. |
@@ -28,7 +28,7 @@ See [the product scope](docs/feature-spec.md) for the exact available features, 
 - Contract and site submissions are prepared as GitHub issues. This repository is public, so visitors can review and submit them with a GitHub account.
 - There is no live token scanner or active bounty pool.
 - The interactive gallery has three fictional puzzles. Holding at least 1 SCAM unlocks three optional bonus security cases through a read-only Phantom balance check. No signature, transfer, or transaction is requested; this lightweight client-side pass is not secure access control or a financial reward.
-- Pump.fun community pulse polls offer three unverified sentiment choices with counts only and no comments. SCAM holdings do not weight real-coin polls. The vote API requires an Upstash Redis database and Vercel environment variables; follow [the setup guide](docs/community-voting.md) and verify the production API before calling the poll live.
+- Pump.fun community pulse polls offer three unverified sentiment choices with counts only and no comments. Visitors can search active coins by name/ticker or paste a mint for direct lookup. SCAM holdings do not weight real-coin polls. The vote API requires an Upstash Redis database and Vercel environment variables; follow [the setup guide](docs/community-voting.md) and verify the production API before calling the poll live.
 
 ## Submit a research candidate or issue
 
