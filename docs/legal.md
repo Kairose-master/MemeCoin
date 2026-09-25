@@ -19,4 +19,4 @@ This is a project policy, not legal advice. Rules for token promotion, financial
 
 ## Current project limitations
 
-There is no live scam scanner, confidential vulnerability intake route, active bounty program, or verified operating ledger for the proposed fee allocation. Public GitHub issues are available for general research candidates and site corrections; do not use them for confidential vulnerability disclosure.
+There is no live scam scanner, confidential vulnerability intake route, or active bounty program. Public GitHub issues are available for fictional exhibit suggestions, general research candidates, and site corrections; do not use them for confidential vulnerability disclosure.

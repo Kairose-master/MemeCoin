@@ -9,4 +9,4 @@ An educational archive of common smart-contract attack patterns. The site accept
 - Mint: `HvyZwwPJhPp5mxkr48SmGt7b5p2Tqrwzyjf6sT5JpMBV`
 - Solscan: https://solscan.io/token/HvyZwwPJhPp5mxkr48SmGt7b5p2Tqrwzyjf6sT5JpMBV
 
-SCAM is a meme token with no intrinsic value or promised returns; it can lose all value. The initial launch buy was burned, but the creator may hold tokens acquired separately. No active bounty or operational fee-allocation program is promised. Verify current information on-chain and do your own research.
+SCAM is a meme token with no intrinsic value or promised returns; it can lose all value. The initial launch buy was burned, but the creator may hold tokens acquired separately. Verify current information on-chain and do your own research.

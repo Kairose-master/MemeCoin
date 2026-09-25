@@ -11,7 +11,7 @@ An educational archive for smart-contract attack patterns and community security
 | `site/` | Static museum site, token links, research intake interface, and risk disclosures. |
 | `launch/` | Owner-operated PumpPortal launch and SPL token burn scripts. Never commit secrets. |
 | `promo/` | English-only communication drafts and disclosure copy. |
-| `docs/` | Project status, token facts, bounty status, and submission/review boundaries. |
+| `docs/` | Product scope, token facts, and submission/review boundaries. |
 | `.github/ISSUE_TEMPLATE/` | Structured issue templates for contract candidates and site/archive reports. |
 
 ## Current, verifiable scope
@@ -25,7 +25,7 @@ See [the product scope](docs/feature-spec.md) for the exact available features, 
 - Public explorer: [Solscan](https://solscan.io/token/HvyZwwPJhPp5mxkr48SmGt7b5p2Tqrwzyjf6sT5JpMBV).
 - The archive contains educational descriptions of common vulnerability patterns. A description is not proof that any named live project is exploitable.
 - Contract and site submissions are prepared as GitHub issues. This repository is public, so visitors can review and submit them with a GitHub account.
-- There is no live token scanner, active bounty pool, or operational 60/40 creator-fee allocation ledger. Do not advertise those as available until the implementation and public evidence exist.
+- There is no live token scanner or active bounty pool.
 - The interactive gallery has three fictional puzzles. Holding at least 1 SCAM unlocks one optional bonus exhibit through a read-only Phantom wallet balance check. No signature, transfer, or transaction is requested; this client-side pass is not secure access control or a financial reward.
 
 ## Submit a research candidate or issue

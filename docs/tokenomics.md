@@ -1,6 +1,6 @@
-# Token facts and project treasury status
+# Token facts
 
-This file separates launch facts from proposals. Verify dynamic ownership, liquidity, rewards, and platform fees directly on-chain or against current Pump.fun documentation before publishing figures.
+This file records stable launch facts. Verify dynamic ownership and liquidity directly on-chain before publishing current figures.
 
 ## Token record
 
@@ -14,11 +14,6 @@ This file separates launch facts from proposals. Verify dynamic ownership, liqui
 
 The initial launch buy was burned. This does not mean the creator can never hold the token: the creator may acquire tokens separately after launch. Current balances must be checked on-chain. Do not say “creator holds zero” without a fresh, scoped verification.
 
-## Treasury and fee allocation
-
-The creator-fee recipient address in the launch record is public. A public address alone is not an operating treasury or an auditable spending program. No verified public receipt-and-expense ledger, funded bounty pool, or active 60/40 distribution process is currently published.
-
-The previously discussed allocation of 60% to research bounties, 40% to infrastructure, and 0% to buybacks is a **proposal only**. Do not present it as an implemented or guaranteed allocation. To activate it responsibly, publish a ledger with dated incoming fee transactions, conversion rates if applicable, approved allocation calculations, outgoing transactions, receipts, remaining balances, and periodic reconciliations. Keep a change log and disclose exceptions. Do not promise bounty awards before funds and review operations exist.
 
 ## Not promised
 

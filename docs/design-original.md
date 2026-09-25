@@ -21,7 +21,6 @@ The site must distinguish documented facts, educational patterns, proposals, and
 - Site/archive issues can use regular GitHub issues.
 - Public issue forms are not an appropriate channel for weaponizable details about unpatched live vulnerabilities.
 - Do not make a bounty active until a funded wallet, written scope, acceptance criteria, payment rules, and public transaction ledger exist.
-- The proposed 60% bounty / 40% infrastructure / 0% buyback fee split is not operational until receipts, expenses, balances, and periodic reconciliations are published.
 - The initial launch buy was burned. The creator may acquire tokens separately, so live ownership must be verified rather than described as permanently zero.
 
 ## Current site implementation

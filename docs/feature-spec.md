@@ -4,7 +4,7 @@
 
 ## Product purpose
 
-SCAM Museum is a public, educational archive for explaining general smart-contract failure patterns and accepting community research leads. SCAM is also the name/ticker of an associated Pump.fun meme token. The token is not required to browse the archive, submit a research lead, or report a site issue.
+SCAM Museum is a public, educational archive for explaining general smart-contract failure patterns and accepting community research leads. SCAM is also the name/ticker of an associated Pump.fun meme token. The token is not required to browse the archive, suggest an exhibit, submit a research lead, or report a site issue; holding at least 1 SCAM only opens an optional bonus exhibit.
 
 ## Available now
 
@@ -14,9 +14,8 @@ SCAM Museum is a public, educational archive for explaining general smart-contra
 | Curator Pass | Connect a Phantom Solana wallet and check its balance of the SCAM mint. A balance of at least 1 SCAM reveals one optional bonus exhibit. | Read-only balance lookup; no message signature, token transfer, or transaction. The public address is sent to Solana's public RPC, not to a SCAM Museum backend. The bonus is a lightweight client-side experience, not protected confidential content or a financial reward. |
 | Read the archive | Read short educational summaries of common contract failure patterns. | Summaries are general examples, not verified findings against named deployed contracts. They are not an audit or safety rating. |
 | Submit a research lead | Fill a form that prepares a GitHub issue draft with network, deployment status, public source/address, question, and optional evidence. | A maintainer reviews it manually. GitHub account required to submit. No response time or publication is promised. |
-| Report a site/archive issue | Prepare a GitHub issue about a correction, broken link, accessibility problem, or site bug. | This is a public issue flow, not confidential vulnerability intake. |
+| Suggest an exhibit or report a site/archive issue | Prepare a GitHub issue proposing a fictional puzzle theme or reporting a correction, broken link, accessibility problem, or site bug. | Suggestions are manually reviewed and are not guaranteed to be published. This is a public issue flow, not confidential vulnerability intake. |
 | View token references | Open the Pump.fun token page and Solscan token page for the configured mint. | Links do not imply endorsement, liquidity, market availability, or token value. Dynamic holdings and market facts must be checked on-chain. |
-| Review project disclosures | Read current token, bounty, fee-allocation, and security-reporting status. | The 60/40 fee split is a proposal only; there is no active funded bounty or published receipt-and-expense ledger. |
 
 ## Explicitly not available
 
@@ -25,7 +24,6 @@ SCAM Museum is a public, educational archive for explaining general smart-contra
 - Automated exploit reproduction, transaction simulation, monitoring, or alerts.
 - A confidential vulnerability intake channel or incident-response service.
 - A funded bounty, guaranteed award, holder reward, staking, airdrop, buyback, or revenue share.
-- An operational 60% bounty / 40% infrastructure creator-fee allocation or a public accounting ledger for it.
 - Token price support, liquidity commitments, exchange listings, or investment returns.
 
 ## Intake and review workflow
@@ -47,9 +45,7 @@ Issue acceptance, review timing, findings, and publication are not guaranteed. D
 
 ## Token and financial disclosures
 
-SCAM is a speculative meme token that can lose all value. The archive has no token-gated features and promises no utility, return, liquidity, listing, or price outcome. The recorded initial launch buy was burned; this does not prove the creator can never acquire tokens later. Current balances and authorities require fresh on-chain verification.
-
-The 60/40 creator-fee split remains a proposal until its receiving address, incoming fee records, allocation calculations, spending approvals, transaction receipts, and reconciliations are published and maintained. Do not advertise it as active before then.
+SCAM is a speculative meme token that can lose all value. The only current token-linked site feature is an optional client-side bonus exhibit; there are no monetary rewards or promises of return, liquidity, listing, or price outcome. The recorded initial launch buy was burned; this does not prove the creator can never acquire tokens later. Current balances and authorities require fresh on-chain verification.
 
 ## Change control
 

@@ -14,7 +14,7 @@ Reproductions should run locally or on explicitly authorized test systems. The p
 
 ## The token is separate from the research
 
-SCAM is a Pump.fun meme token with no intrinsic value or promised returns. The initial launch buy was burned; the creator may hold tokens acquired separately. There is no active bounty pool or operational fee-allocation ledger. These facts should be rechecked against on-chain records before publication.
+SCAM is a Pump.fun meme token with no intrinsic value or promised returns. The initial launch buy was burned; the creator may hold tokens acquired separately. These facts should be rechecked against on-chain records before publication.
 
 Museum: https://scam-museum-snowy.vercel.app
 Mint: `HvyZwwPJhPp5mxkr48SmGt7b5p2Tqrwzyjf6sT5JpMBV`
