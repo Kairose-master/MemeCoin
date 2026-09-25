@@ -4,7 +4,7 @@
 
 ## Product purpose
 
-SCAM Museum is a public, educational archive for explaining general smart-contract failure patterns and accepting community research leads. SCAM is also the name/ticker of an associated Pump.fun meme token. The token is not required to browse the archive, suggest an exhibit, submit a research lead, or report a site issue; holding at least 1 SCAM only opens an optional bonus exhibit.
+SCAM Museum is a public, playable learning site for exploring general smart-contract failure patterns and accepting community exhibit suggestions and research leads. SCAM is also the name/ticker of an associated Pump.fun meme token. The token is not required to play, suggest an exhibit, submit a research lead, or report a site issue; holding at least 1 SCAM only opens an optional bonus exhibit.
 
 ## Available now
 
