@@ -4,7 +4,7 @@
 - `msg.sender.call{value: bal}("")` 가 `balances[msg.sender] = 0` 보다 먼저.
 - 받는 쪽 `receive()` 가 `withdraw()` 를 다시 부르면 잔액이 아직 그대로 — 금고가 빈다. 2016년 The DAO 가 정확히 이것.
 - 막는 법: Checks-Effects-Interactions. 잔액을 먼저 0 으로, 그 다음 전송. 뮤텍스는 보험.
-- 전시물: {SITE}#ReentrantVault
+- 전시물: https://scam-museum-snowy.vercel.app#ReentrantVault
 
 ## 02 OpenVault — 접근 제어 누락
 - `function adminWithdraw(address to, uint amount) external { … }` — `onlyOwner` 가 없다.
@@ -38,4 +38,4 @@
 
 ## 08~12 멀쩡한 다섯 — 바운티
 - SafeVault(CEI + 뮤텍스) · BoundedOwner(타임락 + 상한) · LibraryVault(고정 delegatecall) · CommitLottery(커밋-리빌) · GuardedInitializer(가드)
-- 자동 프루버가 예산 안에서 못 깼다. "못 깼다" 는 "안전하다" 가 아니다. 깨면 SOL 바운티. 규칙: {SITE}/bounty
+- 자동 프루버가 예산 안에서 못 깼다. "못 깼다" 는 "안전하다" 가 아니다. 깨면 SOL 바운티. 규칙: https://scam-museum-snowy.vercel.app/bounty
