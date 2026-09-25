@@ -26,7 +26,7 @@
 cd launch && npm i
 export PUMPFUN_API_KEY=…      # PumpPortal (Lightning) API 키 — 연결된 지갑에서 dev buy + 수수료가 나간다
 export PINATA_JWT=…           # 선택. 없으면 site/metadata.json 의 공개 URL 을 메타데이터 URI 로 쓴다
-export SITE_URL=https://scam-museum.vercel.app
+export SITE_URL=https://scam-museum-snowy.vercel.app
 npx tsx launch.ts --dev-buy 0.01 --dry-run   # 체인에 아무것도 안 보낸다
 npx tsx launch.ts --dev-buy 0.01 --confirm LAUNCH
 ```

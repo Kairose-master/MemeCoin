@@ -2,13 +2,13 @@
  * SCAM 발행 — PumpPortal Lightning `create`. 정직한 버전만: dev buy 상한 0.05 SOL, 번들 없음, 물량 없음.
  *   npx tsx launch.ts --dev-buy 0.01 --dry-run
  *   npx tsx launch.ts --dev-buy 0.01 --confirm LAUNCH
- * env: PUMPFUN_API_KEY (필수) · PINATA_JWT (선택) · SITE_URL (기본 https://scam-museum.vercel.app)
+ * env: PUMPFUN_API_KEY (필수) · PINATA_JWT (선택) · SITE_URL (기본 https://scam-museum-snowy.vercel.app)
  */
 import { createHash, generateKeyPairSync } from "node:crypto";
 import { readFileSync, writeFileSync } from "node:fs";
 
 const args = Object.fromEntries(process.argv.slice(2).map((a, i, xs) => a.startsWith("--") ? [a.slice(2), xs[i + 1]?.startsWith("--") || xs[i + 1] === undefined ? "true" : xs[i + 1]] : []).filter((x) => x.length));
-const SITE = process.env.SITE_URL ?? "https://scam-museum.vercel.app";
+const SITE = process.env.SITE_URL ?? "https://scam-museum-snowy.vercel.app";
 const MAX_DEV_BUY = 0.05;
 const devBuy = Math.max(0, Math.min(MAX_DEV_BUY, Number(args["dev-buy"] ?? 0.01)));
 const dry = args["dry-run"] === "true";
