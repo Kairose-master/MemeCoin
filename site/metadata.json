@@ -1,0 +1,9 @@
+{
+ "name": "SCAM",
+ "symbol": "SCAM",
+ "description": "Smart Contract Attack Museum. Every scam contract we could prove exploitable, archived with its proof-of-concept — reentrancy, open vaults, bad accounting, naive oracles, delegatecall hijacks, weak randomness, open initializers. Launched by a trading bot as an honest meme: creator holds 0, no bundle, no fake volume. This token has no intrinsic value and can go to zero.",
+ "image": "https://scam-museum.vercel.app/assets/scam.png",
+ "showName": true,
+ "createdOn": "https://pump.fun",
+ "website": "https://scam-museum.vercel.app"
+}

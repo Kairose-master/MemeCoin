@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SCAM — Smart Contract Attack Museum</title>
+<meta name="description" content="우리가 증명한 모든 사기 컨트랙트의 박물관. 내재가치 없는 밈코인. 수익 보장 없음. creator 물량 0." />
+<meta property="og:title" content="SCAM — Smart Contract Attack Museum" />
+<meta property="og:image" content="https://scam-museum.vercel.app/assets/scam.png" />
+<style>
+:root{--bg:#0b0508;--panel:#150a0e;--line:#3a1a1e;--red:#ff2d4a;--yel:#f5c400;--fg:#f5e6e8;--mute:#c98a95}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:ui-monospace,"Courier New",monospace;line-height:1.5}
+.wrap{max-width:980px;margin:0 auto;padding:16px}
+.notice{background:#2a0d13;border:1px solid var(--red);color:#ffd7dc;padding:10px 14px;font-size:13px;border-radius:8px}
+header{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:center;padding:24px 0}
+header img{width:200px;border-radius:12px;border:1px solid var(--line)}
+h1{margin:0;font-size:44px;color:var(--red);letter-spacing:4px}h2{font-size:18px;margin:32px 0 10px;color:var(--yel)}
+.sub{color:var(--mute);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card h3{margin:0 0 6px;font-size:15px}.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);margin-right:6px;color:var(--mute)}
+.proven{color:var(--yel);border-color:var(--yel)}.safe{color:#7fd8a0;border-color:#2f6b45}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--mute);font-weight:normal}
+code{background:#1f0d12;padding:1px 5px;border-radius:4px}
+a{color:#ffb3bd}
+.kv{display:grid;grid-template-columns:160px 1fr;gap:6px 12px;font-size:13px}.kv dt{color:var(--mute)}.kv dd{margin:0}
+footer{margin:40px 0 20px;color:var(--mute);font-size:12px}
+@media (max-width:640px){header{grid-template-columns:1fr}header img{width:140px}h1{font-size:34px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="notice"><b>고지</b> · SCAM 은 내재가치가 없는 밈코인이며 수익을 보장하지 않습니다. 언제든 0이 될 수 있습니다. 발행자는 물량을 보유하지 않고(창설 매수는 소각), 수수료 지갑은 공개되어 있습니다. 이 페이지는 투자 권유가 아닙니다. / SCAM is a meme token with no intrinsic value. It can go to zero. Creator holds no supply. Not investment advice.</div>
+
+  <header>
+    <img src="assets/scam.png" alt="SCAM" />
+    <div>
+      <h1>SCAM</h1>
+      <p class="sub">Smart Contract <b style="color:var(--yel)">Attack</b> Museum — 우리가 재현 가능한 PoC로 증명한 사기 컨트랙트의 박물관.<br/>이름이 정직하고, 서사도 정직합니다. 코인은 입장권입니다.</p>
+      <dl class="kv" id="token">
+        <dt>mint</dt><dd id="mint">발행 전 (launch pending)</dd>
+        <dt>수수료 지갑</dt><dd id="feeWallet">공개 예정</dd>
+        <dt>creator 물량</dt><dd>0 — 창설 매수(≤0.05 SOL)는 소각</dd>
+        <dt>번들 / 볼륨 봇</dt><dd>없음 / 없음</dd>
+        <dt>발행 봇의 규칙</dt><dd>발행한 봇은 이 코인을 절대 사고팔지 않는다</dd>
+      </dl>
+    </div>
+  </header>
+
+  <h2>전시물 — 취약 7 (PROVEN) · 멀쩡 5 (바운티 대상)</h2>
+  <p class="sub">각 전시물은 자동 익스플로잇 증명 에이전트가 격리된 EVM 에서 불변식 위반을 재현한 기록입니다. 방어 연구·교육 목적입니다.</p>
+  <div class="grid">
+    <div class="card"><span class="tag proven">PROVEN</span><span class="tag">재진입</span><h3>ReentrantVault</h3><p class="sub"><code>withdraw()</code>가 외부 <code>call</code> 뒤에 잔액을 0으로 — CEI 위반. 깨진 술어 <code>vaultSolvent</code>.</p></div>
+    <div class="card"><span class="tag proven">PROVEN</span><span class="tag">접근 제어</span><h3>OpenVault</h3><p class="sub"><code>adminWithdraw</code>·<code>setOwner</code>에 <code>onlyOwner</code> 없음. <code>ownerUnchanged</code> 붕괴.</p></div>
+    <div class="card"><span class="tag proven">PROVEN</span><span class="tag">정수 언더플로</span><h3>BadAccounting</h3><p class="sub"><code>unchecked</code> 블록의 <code>balanceOf -= amount</code> — 0에서 빼면 2²⁵⁶−1.</p></div>
+    <div class="card"><span class="tag proven">PROVEN</span><span class="tag">오라클 조작</span><h3>NaiveOracle</h3><p class="sub">즉시 spot 가격으로 담보 평가, TWAP·상한 없음. <code>protocolSolvent</code> 붕괴.</p></div>
+    <div class="card"><span class="tag proven">PROVEN</span><span class="tag">delegatecall</span><h3>DelegateVault</h3><p class="sub">임의 주소로 <code>delegatecall</code> — 스토리지 하이재킹으로 owner 교체.</p></div>
+    <div class="card"><span class="tag proven">PROVEN</span><span class="tag">약한 난수</span><h3>PredictableLottery</h3><p class="sub">블록 값으로 만든 난수 — 같은 블록에서 예측 가능. <code>houseSolvent</code> 붕괴.</p></div>
+    <div class="card"><span class="tag proven">PROVEN</span><span class="tag">initializer</span><h3>OpenInitializer</h3><p class="sub">누구나 다시 <code>initialize</code> — 관리자 탈취. <code>adminUninitialized</code> 붕괴.</p></div>
+    <div class="card"><span class="tag safe">NOT PROVEN</span><span class="tag">바운티</span><h3>SafeVault</h3><p class="sub">CEI + 뮤텍스. 탐색 예산 안에서 위반을 못 찾았다. 깨면 바운티.</p></div>
+    <div class="card"><span class="tag safe">NOT PROVEN</span><span class="tag">바운티</span><h3>BoundedOwner</h3><p class="sub">onlyOwner + 2일 타임락 + 10% 상한.</p></div>
+    <div class="card"><span class="tag safe">NOT PROVEN</span><span class="tag">바운티</span><h3>LibraryVault</h3><p class="sub">고정 모듈 delegatecall.</p></div>
+    <div class="card"><span class="tag safe">NOT PROVEN</span><span class="tag">바운티</span><h3>CommitLottery</h3><p class="sub">커밋-리빌 난수.</p></div>
+    <div class="card"><span class="tag safe">NOT PROVEN</span><span class="tag">바운티</span><h3>GuardedInitializer</h3><p class="sub"><code>initialized</code> 가드.</p></div>
+  </div>
+  <p class="sub">"NOT PROVEN" 은 안전성 증명이 아닙니다. 주어진 탐색 예산에서 재현 가능한 위반을 찾지 못했다는 뜻입니다. 그래서 바운티가 걸립니다.</p>
+
+  <h2>토크노믹스 — pump.fun 이 정해 둔 것과 우리가 정하는 것</h2>
+  <table>
+    <tr><th>총공급</th><td>10억 고정 · 추가 발행 불가 · 100% 본딩커브 → 졸업 시 유동성 자동 잠금 (pump.fun)</td></tr>
+    <tr><th>팀·프리세일·베스팅</th><td>없음 — 구조상 불가능</td></tr>
+    <tr><th>creator 초기 매수</th><td>≤ 0.05 SOL, 발행 직후 소각 주소로 전송</td></tr>
+    <tr><th>creator 수수료 용처</th><td>60% 바운티 풀(멀쩡한 타깃 5개 + 신규 전시물을 깨는 PoC 에 SOL 지급, 지급 조건은 하네스 통과) · 40% 프루버 인프라 · 바이백·마케팅 지갑 0%</td></tr>
+    <tr><th>약속하지 않는 것</th><td>가격 · 상장 · 에어드랍 · 스테이킹 이자 · 수익 분배</td></tr>
+  </table>
+
+  <h2>사용처 — 돈이 아니라 쓰임새</h2>
+  <table>
+    <tr><th>전시물 등재</th><td>자기 컨트랙트(또는 실제 사고 사례)를 후보로 제출. 프루버가 깨면 이름·PoC·플라크 등재. 제출은 SCAM 소액 소각(스팸 방지, 누구에게도 돈이 가지 않음)</td></tr>
+    <tr><th>바운티 참가</th><td>멀쩡한 타깃 5개를 깨는 PoC. 지급은 SOL. <b>참가에 토큰 불필요</b></td></tr>
+    <tr><th>큐레이션 투표</th><td>다음 전시물 계열을 보유량 스냅샷으로. 금전 없음</td></tr>
+    <tr><th>후원자 벽</th><td>일정량 이상 보유 지갑을 옵트인으로 표시</td></tr>
+    <tr><th>자기 감사</th><td>발행 봇의 커뮤니티 데스크가 SCAM 을 읽은 점수(creator 비중·홀더 집중·댓글·보안 판정)를 공개 — 박물관이 자기 자신을 전시한다</td></tr>
+  </table>
+
+  <footer>SCAM · Smart Contract Attack Museum · 이 사이트의 모든 익스플로잇은 격리된 로컬 EVM 에서 방어 연구 목적으로만 재현되었습니다. · <a href="https://github.com/Kairose-master/MemeCoin">github</a></footer>
+</div>
+<script>
+// 발행 뒤 launch.json 이 올라오면 mint·수수료 지갑을 채운다 (없으면 그대로)
+fetch('launch.json').then(r=>r.ok?r.json():null).then(j=>{ if(!j||!j.mint) return; document.getElementById('mint').innerHTML='<a href="https://pump.fun/coin/'+j.mint+'">'+j.mint+'</a>'; if(j.feeWallet) document.getElementById('feeWallet').innerHTML='<a href="https://solscan.io/account/'+j.feeWallet+'">'+j.feeWallet+'</a>'; }).catch(()=>{});
+</script>
+</body>
+</html>
