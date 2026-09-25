@@ -1,19 +1,25 @@
-# 토크노믹스 — pump.fun 이 정해 둔 것과 우리가 정하는 것
+# Token facts and project treasury status
 
-| 항목 | 값 | 누가 |
-|---|---|---|
-| 총공급 | 10억, 고정, 추가 발행 불가 | pump.fun |
-| 배분 | 100% 본딩커브 → 졸업 시 PumpSwap 유동성 자동 잠금 | pump.fun |
-| 팀·투자자·프리세일·베스팅 | 없음 (구조상 불가능) | — |
-| creator 초기 매수 | ≤ 0.05 SOL, 발행 직후 소각 (`launch/burn.ts`) | 우리 |
-| 거래 수수료 | 커브 1.25%(creator 0.3%) · PumpSwap 0.25%(creator 최대 0.95%) | pump.fun |
+This file separates launch facts from proposals. Verify dynamic ownership, liquidity, rewards, and platform fees directly on-chain or against current Pump.fun documentation before publishing figures.
 
-creator 수수료 용처 (공개 지갑, 지출 내역 공개):
+## Token record
 
-| 몫 | 용처 |
-|---|---|
-| 60% | 바운티 풀 — 멀쩡한 타깃 5개 + 신규 전시물을 깨는 PoC 에 SOL 지급. 지급 조건은 하네스 `_prove()` 통과 |
-| 40% | 프루버 인프라 (서버·RPC·데이터) |
-| 0% | 바이백·소각·마케팅 지갑 — 바이백은 시세 개입으로 읽힌다 |
+| Field | Record |
+| --- | --- |
+| Network | Solana |
+| Mint | `HvyZwwPJhPp5mxkr48SmGt7b5p2Tqrwzyjf6sT5JpMBV` |
+| Launch transaction | `56gtN3pXyotNLcNS2biu1dcWxymL9J7gDVL3TGTo7XEN4rD42zkvumbxchva1QRJhY6VtvZQhJXmgugfBxWSryh2` |
+| Burn transaction | `3DCBiFkvq7RndkhqxCYnHzGLvkTLHH51eJD4BbC7Xr3jzjLWZ1iBXXy1FH4Nv4dwAUECj3b3AoMa1VnWDSwWNduJ` |
+| Initial buy recorded by launcher | `0.01 SOL` (see `site/launch.json`) |
 
-약속하지 않는 것: 가격 · 상장 · 에어드랍 · 스테이킹 이자 · 수익 분배 · 수수료 환급. 전부 "돈을 넣으면 돈이 나온다" 이고 그건 증권이거나 사기다.
+The initial launch buy was burned. This does not mean the creator can never hold the token: the creator may acquire tokens separately after launch. Current balances must be checked on-chain. Do not say “creator holds zero” without a fresh, scoped verification.
+
+## Treasury and fee allocation
+
+The creator-fee recipient address in the launch record is public. A public address alone is not an operating treasury or an auditable spending program. No verified public receipt-and-expense ledger, funded bounty pool, or active 60/40 distribution process is currently published.
+
+The previously discussed allocation of 60% to research bounties, 40% to infrastructure, and 0% to buybacks is a **proposal only**. Do not present it as an implemented or guaranteed allocation. To activate it responsibly, publish a ledger with dated incoming fee transactions, conversion rates if applicable, approved allocation calculations, outgoing transactions, receipts, remaining balances, and periodic reconciliations. Keep a change log and disclose exceptions. Do not promise bounty awards before funds and review operations exist.
+
+## Not promised
+
+Price appreciation, returns, listings, liquidity, airdrops, staking yield, revenue sharing, buybacks, token burns beyond the recorded burn transaction, or guaranteed utility. SCAM is a meme token with no intrinsic value and can lose all value.

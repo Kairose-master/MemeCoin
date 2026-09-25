@@ -1,0 +1,54 @@
+# SCAM Museum — Product Scope
+
+**Status: early, manually maintained educational archive.** This document defines what the project does today and what it does not do. A feature is not live merely because it appears in a proposal, mockup, or roadmap.
+
+## Product purpose
+
+SCAM Museum is a public, educational archive for explaining general smart-contract failure patterns and accepting community research leads. SCAM is also the name/ticker of an associated Pump.fun meme token. The token is not required to browse the archive, submit a research lead, or report a site issue.
+
+## Available now
+
+| Capability | What a visitor can do | Current boundary |
+| --- | --- | --- |
+| Read the archive | Read short educational summaries of common contract failure patterns. | Summaries are general examples, not verified findings against named deployed contracts. They are not an audit or safety rating. |
+| Submit a research lead | Fill a form that prepares a GitHub issue draft with network, deployment status, public source/address, question, and optional evidence. | A maintainer reviews it manually. GitHub account required to submit. No response time or publication is promised. |
+| Report a site/archive issue | Prepare a GitHub issue about a correction, broken link, accessibility problem, or site bug. | This is a public issue flow, not confidential vulnerability intake. |
+| View token references | Open the Pump.fun token page and Solscan token page for the configured mint. | Links do not imply endorsement, liquidity, market availability, or token value. Dynamic holdings and market facts must be checked on-chain. |
+| Review project disclosures | Read current token, bounty, fee-allocation, and security-reporting status. | The 60/40 fee split is a proposal only; there is no active funded bounty or published receipt-and-expense ledger. |
+
+## Explicitly not available
+
+- Automated or real-time scam, rug-pull, or contract detection.
+- Contract audits, certification, safety scores, or a verdict that a project is malicious.
+- Automated exploit reproduction, transaction simulation, monitoring, or alerts.
+- A confidential vulnerability intake channel or incident-response service.
+- A funded bounty, guaranteed award, holder reward, staking, airdrop, buyback, or revenue share.
+- An operational 60% bounty / 40% infrastructure creator-fee allocation or a public accounting ledger for it.
+- Token price support, liquidity commitments, exchange listings, or investment returns.
+
+## Intake and review workflow
+
+1. A contributor submits public, non-sensitive context through the static site form.
+2. The form opens a prefilled GitHub issue for the contributor to inspect and submit.
+3. A maintainer triages the issue manually and may request safe, reproducible evidence.
+4. If accepted, the maintainer may add an educational case with scope, evidence, limitations, and review notes.
+
+Issue acceptance, review timing, findings, and publication are not guaranteed. Do not use public issues for weaponizable details about an unpatched live system. Contributors should use the affected project's authorized security contact for confidential disclosure.
+
+## Safety and editorial rules
+
+- Label exhibits as general patterns unless a specific case has been independently reviewed and its evidence is published.
+- Separate observed facts, hypotheses, and conclusions.
+- Reproduce only in local, testnet, or explicitly authorized environments.
+- Never ask for or publish seed phrases, private keys, API keys, credentials, personal data, or unauthorized exploit material.
+- Do not imply that holding or buying SCAM is needed to participate in research.
+
+## Token and financial disclosures
+
+SCAM is a speculative meme token that can lose all value. The archive has no token-gated features and promises no utility, return, liquidity, listing, or price outcome. The recorded initial launch buy was burned; this does not prove the creator can never acquire tokens later. Current balances and authorities require fresh on-chain verification.
+
+The 60/40 creator-fee split remains a proposal until its receiving address, incoming fee records, allocation calculations, spending approvals, transaction receipts, and reconciliations are published and maintained. Do not advertise it as active before then.
+
+## Change control
+
+When functionality changes, update this document, the README, the public site, and relevant disclosure copy together. Mark a capability available only after it works on the public deployment and the evidence needed to support its claims is linked.

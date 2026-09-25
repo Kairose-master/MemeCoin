@@ -1,0 +1,18 @@
+# Local secrets and environment configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Dependencies and generated output
+node_modules/
+dist/
+build/
+.vercel/
+
+# Local logs and editor state
+npm-debug.log*
+*.log
+.DS_Store
+Thumbs.db

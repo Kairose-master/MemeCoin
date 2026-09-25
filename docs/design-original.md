@@ -1,75 +1,29 @@
-# SCAM — 토크노믹스 · 합법 홍보 창구 · 사용처 (제안, 2026-09-25)
+# Project and site design notes
 
-SCAM = **Smart Contract Attack Museum**. TRUST404(`Kairose-master/404-temp`, trust404-prover.vercel.app)가 재현 가능한 PoC로 증명한
-취약 컨트랙트의 박물관이고, 그 박물관의 입장권·후원 증표가 이 코인이다. 발행 도구와 코드에 박힌 규칙은 `docs/pumpfun.md` "SCAM" 절.
-이 문서는 그 위에서 **무엇을 약속하고 무엇을 약속하지 않는가**를 정한다. 원칙 하나: **수익을 약속하지 않는다. 쓰임새를 약속한다.**
+## Positioning
 
-## 1. 토크노믹스 — pump.fun 이 정해 둔 것과 우리가 정하는 것
+SCAM means **Smart Contract Attack Museum**. The token is an associated meme token; the website is an educational archive and a proposed community research intake. The name is deliberate wordplay, not a claim that the token catches scams.
 
-pump.fun 토큰은 설계 여지가 거의 없다. 그게 오히려 신뢰의 근거다.
+The site must distinguish documented facts, educational patterns, proposals, and unavailable features. It must not imply that a pattern summary proves a real project's wrongdoing, or that lack of a reproduced exploit proves safety.
 
-| 항목 | 값 | 누가 정하나 |
-|---|---|---|
-| 총공급 | 10억, 고정, 추가 발행 불가 (mint 권한 회수) | pump.fun |
-| 배분 | 100% 본딩커브 → 졸업 시 PumpSwap 유동성 (자동 잠금) | pump.fun |
-| 팀·투자자·프리세일·베스팅 | **없음** | 구조상 불가능 — 그래서 없다 |
-| creator 초기 매수 | ≤ 0.05 SOL (≈ 공급의 0.1% 미만) | 우리 — 발행 직후 **소각 주소로 보낸다**. "creator 물량 0"을 문자 그대로 만든다 |
-| 거래 수수료 | 커브 1.25% (creator 0.3%) · 졸업 후 PumpSwap 0.25% (creator 최대 0.95%) | pump.fun |
+## Public channels
 
-우리가 정하는 것은 **creator 수수료의 용처** 하나다. 수수료 수취 지갑은 공개하고, 대시보드가 잔고와 지출을 실시간으로 보여 준다.
+| Channel | Appropriate use | Current limitation |
+| --- | --- | --- |
+| Museum site | Explain common attack patterns, accept candidate submissions, link on-chain records | Manual review only; no live scanner, confidential security inbox, or active bounty |
+| GitHub | Track code/site corrections and candidate research | Public issue submission requires a GitHub account; never post confidential live vulnerabilities |
+| X / Pump.fun | Share educational examples and transparent token disclosures | Avoid profit claims, undisclosed promotion, artificial engagement, and claims of automated detection |
+| Research communities | Discuss reproducible code and defensive lessons | Follow each community's self-promotion and disclosure rules |
 
-| 몫 | 용처 | 왜 |
-|---|---|---|
-| 60% | **바운티 풀** — TRUST404 의 "멀쩡한" 타깃 5개(SafeVault·BoundedOwner·LibraryVault·CommitLottery·GuardedInitializer)와 신규 전시물을 깨는 PoC 에 SOL 지급. 하네스 `_prove()` 통과가 지급 조건 | 박물관을 키우는 돈. 지급 기준이 코드라 자의가 없다 |
-| 40% | **프루버 인프라** — Vercel 함수·RPC·PumpPortal 데이터 요금 | 사용처(§3)가 살아 있으려면 서버가 살아 있어야 한다 |
-| 0% | 바이백·소각·마케팅 지갑 | 바이백은 시세 개입으로 읽힌다. 안 한다 |
+## Product boundaries
 
-약속하지 않는 것: 가격, 상장, 에어드랍, "다음 100배". 약속하는 것: 위 표와 아래 사용처, 그리고 **우리 봇이 이 코인을 절대 사고팔지 않는다**는 것(코드 `isOwnMint`).
+- Contract intake should ask for network, address or source link, deployment status, security question, and safe reproduction context.
+- Site/archive issues can use regular GitHub issues.
+- Public issue forms are not an appropriate channel for weaponizable details about unpatched live vulnerabilities.
+- Do not make a bounty active until a funded wallet, written scope, acceptance criteria, payment rules, and public transaction ledger exist.
+- The proposed 60% bounty / 40% infrastructure / 0% buyback fee split is not operational until receipts, expenses, balances, and periodic reconciliations are published.
+- The initial launch buy was burned. The creator may acquire tokens separately, so live ownership must be verified rather than described as permanently zero.
 
-## 2. 합법적 홍보 창구 — 한국 거주 발행자 기준
+## Current site implementation
 
-가상자산이용자보호법(2024.7 시행)이 금지하는 것은 명확하다: 시세조종(자전·통정·허수), 미공개정보 이용, 부정거래(거짓 표시·기망). 광고 자체는
-금지가 아니지만 **수익 보장·오인 유도 표현**은 부정거래로 걸릴 수 있다. 그래서 채널마다 같은 문장을 붙인다:
-
-> SCAM 은 내재가치가 없는 밈코인이며 수익을 보장하지 않습니다. 언제든 0이 될 수 있습니다. 발행자는 물량을 보유하지 않고, 수수료 지갑은 공개되어 있습니다.
-
-| 창구 | 하는 것 | 하지 않는 것 |
-|---|---|---|
-| **TRUST404 사이트** (trust404-prover.vercel.app) | (해커톤 심사 뒤) "Museum" 탭: 전시물 12개 + 각 PoC + SCAM 패널. 그 전에는 대시보드 `/scam` 이 본진 | 심사 전 저장소 변경, 가격 차트 전면 배치 |
-| **GitHub** `404-temp` README | 토큰 절 한 단락 + 위 고지 | 스타 구걸·이슈 스팸 |
-| **X/트위터** 계정 (없으면 개설) | 전시물 하나당 스레드 하나 — "이 컨트랙트가 왜 깨지나" 기술 글, 마지막 줄에 mint. 발행 고지 | 유료 KOL 미고지 홍보, "곧 펌핑", 가격 예측 |
-| **텔레그램** 채널 | 공지 전용(댓글 열면 봇 스팸). 바운티 공고·지급 내역 | 매수 독려 |
-| **pump.fun 코인 페이지** | 설명·링크·댓글에 전시물 소개. 라이브 방송은 프루버 시연(코드 화면) | 자기 지갑 자전 거래 |
-| **기술 글** (Dev.to·Medium·velog) | 각 취약점 계열의 해설 + PoC 링크 = 전시물 도록 | — |
-| **shorts-factory** (`Kairose-master/shorts-factory`) | 전시물마다 60초 쇼츠 "이 코드의 어디가 사기인가" | 수익 인증 영상 |
-| **Handsel** (`handsel` 에이전트 시장) | "새 전시물을 깨라" 작업을 바운티로 게시 → 워커가 PoC 제출 → 하네스 채점 → USDC/SOL 지급 | — |
-| 해커톤·보안 커뮤니티 | Track 04 제출물 그대로 — 토큰은 각주 | 커뮤니티 규칙 위반 홍보 |
-
-**직접 하지 않는 것**: 번들 매수, 볼륨 봇, 가짜 홀더, 유료 트렌딩, 에어드랍 파밍 유도, DM 홍보, 국내 거래소 상장 언급.
-세금: creator 수수료는 소득이다. 발행 전 세무·법률 확인은 발행자 몫이고, 이 문서는 법률 자문이 아니다.
-
-## 3. 사용처 — 돈이 아니라 쓰임새
-
-| 사용처 | 무엇 | 왜 되나 |
-|---|---|---|
-| **① 프루버 우선권** | TRUST404 `POST /api/prove` 는 이미 임의 컨트랙트를 받아 인메모리 EVM 에서 익스플로잇을 생성·검증한다. 지갑에 SCAM 이 있으면(서명으로 증명) 대기열 우선·큰 소스 허용·결과 보관. 없어도 기본 사용은 무료 | 실제로 존재하는 API. 토큰 = 서비스 티어 |
-| **② 전시물 등재** | 자기 컨트랙트(또는 실제 사고 사례)를 "전시물 후보"로 제출. 프루버가 깨면 박물관에 이름·PoC·플라크 등재. 제출은 SCAM 소액 소각 | 스팸 방지 + 소각은 누구에게도 돈이 가지 않는다 |
-| **③ 바운티 참가** | 멀쩡한 타깃 5개를 깨는 PoC 제출. 지급은 SOL(수수료 풀). 참가 자격에 토큰 불필요 | 토큰 보유가 조건이면 "투자→보상" 구조가 된다. 안 한다 |
-| **④ 큐레이션 투표** | 다음 전시물 계열(예: 서명 재사용·플래시론 오라클·브리지)을 보유량 스냅샷으로 투표. 결과는 로드맵일 뿐 금전 없음 | 거버넌스 흉내가 아니라 "무엇을 먼저 증명할까"의 여론조사 |
-| **⑤ 후원자 벽** | 일정량 이상 보유 지갑을 사이트 "후원자 벽"에 표시(옵트인) | 소속감. 그게 밈코인 커뮤니티의 전부다 |
-| **⑥ 자기 감사** | 우리 커뮤니티 데스크가 SCAM 을 읽은 점수(creator 비중·홀더 집중·댓글·보안 판정)를 대시보드에 **실시간 공개** — 우리 코인이 우리 러그 감시에 어떻게 보이는지 | 박물관이 자기 자신을 전시한다. 정직성의 증거 |
-
-하지 않는 사용처: 스테이킹 이자, 수익 분배, 바이백, 거래 수수료 환급. 전부 "돈을 넣으면 돈이 나온다"이고, 그건 증권이거나 사기다.
-
-## 4. 순서 — 404-temp 는 건드리지 않는다 (해커톤 제출 전)
-
-TRUST404 저장소는 해커톤 심사 전까지 **읽기만** 한다. Museum 탭·프루버 서명 티어(①)는 심사 뒤로 미루고, 그 전까지 필요한 것은 전부
-이 저장소(대시보드)에 둔다. 토큰이 심사 대상 제출물에 섞이면 심사에 불리할 수 있으니, **발행 자체를 심사 뒤로 미루는 것도 선택지**다.
-
-1. (심사 전) 대시보드에 `/scam` 페이지: 전시물 12개 요약(404-temp 를 읽어 옮긴 사본, 링크는 공개 사이트로), SCAM 패널, 자기 감사(⑥). 404-temp 변경 없음.
-2. (심사 전) 트위터·텔레그램 채널 개설, 고지문 고정. 발행 카드에 링크 입력.
-3. (발행 시점은 owner 결정) `LAUNCH`. dev buy 는 소각.
-4. (심사 뒤) TRUST404 사이트에 Museum 탭 + `/api/prove` 지갑 서명 티어(①), 전시물 등재(②).
-5. 첫 바운티 공고(③) — 수수료 풀이 0이면 발행자가 시드 0.5 SOL. 전시물 스레드 12개를 주 2개씩.
-
-기대값: 오늘 기저율은 305개 중 졸업 11개다. 박물관이 살아남을 이유는 코인이 아니라 프루버다. 코인은 입장권이다.
+The website is static HTML hosted from `site/`. Its intake interface prepares a structured GitHub issue URL for the public repository. Submitters can review the issue before posting and need a GitHub account. This public issue tracker is not a confidential disclosure channel; do not put weaponizable details about live vulnerabilities in public reports.

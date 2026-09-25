@@ -1,248 +1,109 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>SCAM Museum</title>
-<meta name="description" content="Smart Contract Attack Museum. Twelve contracts, seven proven exploitable with reproducible proofs. A meme token as the ticket. Creator holds nothing." />
-<meta property="og:title" content="SCAM — Smart Contract Attack Museum" />
-<meta property="og:description" content="Twelve contracts. Seven proven exploitable. Creator holds nothing. The bot that launched it never trades it." />
-<meta property="og:image" content="https://scam-museum-snowy.vercel.app/assets/scam-museum-promo-v1.png" />
-<meta property="og:image:alt" content="A dark smart-contract security museum with glass cases displaying broken code and defenses." />
-<meta name="twitter:card" content="summary_large_image" />
-<link rel="icon" href="assets/scam.png" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" />
-<style>
-:root{
-  --wall:#120D10; --wall-2:#1A1317; --line:#33262C; --line-soft:#261C21;
-  --placard:#F3EEE6; --placard-2:#E9E2D8; --ink:#17120F; --ink-2:#5B4F52;
-  --fg:#F1E9E9; --muted:#A5949B; --red:#FF2D4A; --red-deep:#B31B31; --hazard:#F5C400; --ok:#7FD8A0;
-  --serif:"Fraunces",Georgia,"Times New Roman",serif; --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif; --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--wall);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
-a{color:var(--fg);text-decoration-color:var(--red);text-underline-offset:3px}
-a:hover{color:#fff}
-:focus-visible{outline:2px solid var(--hazard);outline-offset:3px}
-.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-h1,h2,h3{font-family:var(--serif);text-wrap:balance;margin:0}
-h2{font-size:clamp(28px,4vw,40px);font-weight:600;line-height:1.1;letter-spacing:-.01em}
-p{max-width:64ch}
-.muted{color:var(--muted)}
-/* notice */
-.notice{background:#2A0F16;border-bottom:1px solid #4A1A25;color:#FFD9DF;font-size:13px;padding-block:10px}
-.notice .wrap{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
-.notice b{color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding-top:3px}
-/* nav */
-nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--wall) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-soft)}
-nav .wrap{display:flex;align-items:center;gap:20px;height:56px}
-nav .brand{font-family:var(--serif);font-weight:800;font-size:22px;letter-spacing:.06em;color:var(--red)}
-nav ul{display:flex;gap:18px;list-style:none;margin:0 0 0 auto;padding:0;font-size:13px}
-nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--fg)}
-@media (max-width:640px){nav ul{display:none}}
-/* hero */
-.hero{padding-block:56px 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
-.hero h1{font-size:clamp(56px,11vw,132px);font-weight:800;line-height:.9;letter-spacing:.02em;color:var(--red);text-shadow:0 0 40px rgba(255,45,74,.25)}
-.hero .tag{font-family:var(--serif);font-weight:300;font-size:clamp(22px,3vw,32px);line-height:1.2;margin-top:14px}
-.hero .tag em{font-style:italic;color:var(--hazard)}
-.hero .lede{margin-top:22px;font-size:17px;color:#D9CDD0}
-.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 16px;border-radius:6px;font-weight:600;font-size:14px;text-decoration:none;border:1px solid var(--line)}
-.btn.primary{background:var(--red);border-color:var(--red);color:#fff}
-.btn.primary:hover{background:#ff4560}
-.btn.ghost:hover{border-color:var(--muted)}
-.exhibit-a{position:relative;justify-self:end;width:min(100%,380px)}
-.exhibit-a img{display:block;width:100%;border-radius:10px;border:1px solid var(--line);box-shadow:0 30px 60px rgba(0,0,0,.5)}
-.plaque{position:absolute;left:-14px;bottom:-18px;background:var(--placard);color:var(--ink);padding:10px 14px;border-radius:4px;box-shadow:0 8px 20px rgba(0,0,0,.4);font-family:var(--mono);font-size:12px;line-height:1.4}
-.plaque b{display:block;font-family:var(--serif);font-size:15px;font-weight:600}
-@media (max-width:820px){.hero{grid-template-columns:1fr;gap:28px}.exhibit-a{justify-self:start}}
-/* token strip */
-.token{margin-top:44px;border:1px solid var(--line);border-radius:10px;background:var(--wall-2);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-.token > div{padding:16px 18px;border-right:1px solid var(--line-soft)}
-.token > div:last-child{border-right:0}
-.token .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.token .v{margin-top:6px;font-size:15px;font-weight:500;word-break:break-all}
-.token .v.mono{font-family:var(--mono);font-size:13px}
-.copy{margin-left:8px;font-family:var(--mono);font-size:11px;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:4px;padding:2px 8px;cursor:pointer}
-.copy:hover{color:var(--fg);border-color:var(--muted)}
-/* sections */
-section{padding-block:64px;border-top:1px solid var(--line-soft)}
-.sec-head{display:flex;align-items:end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:26px}
-.sec-head p{margin:8px 0 0;color:var(--muted)}
-/* catalog */
-.filters{display:flex;gap:8px}
-.chip{font-family:var(--mono);font-size:12px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
-.chip[aria-pressed="true"]{border-color:var(--hazard);color:var(--hazard)}
-.catalog{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
-.placard{background:var(--placard);color:var(--ink);border-radius:6px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:10px;position:relative;box-shadow:0 1px 0 rgba(255,255,255,.08) inset, 0 12px 28px rgba(0,0,0,.35)}
-.placard .no{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ink-2);display:flex;justify-content:space-between;align-items:center}
-.stamp{font-family:var(--mono);font-size:10px;letter-spacing:.14em;padding:3px 8px;border-radius:3px;border:1.5px solid}
-.stamp.proven{color:#8A5A00;border-color:var(--hazard);background:#FFF3C4}
-.stamp.open{color:#1E5B3A;border-color:#2F8F5B;background:#DDF3E6}
-.placard h3{font-size:24px;font-weight:600;line-height:1.1}
-.placard .class{font-family:var(--mono);font-size:12px;color:var(--ink-2)}
-.placard p{margin:0;font-size:14px;line-height:1.5;color:#2B2225}
-.placard code{font-family:var(--mono);font-size:12.5px;background:var(--placard-2);padding:1px 5px;border-radius:3px}
-.placard .broke{margin-top:auto;padding-top:10px;border-top:1px dashed #CFC5B8;font-family:var(--mono);font-size:12px;color:var(--ink-2)}
-.placard .broke b{color:var(--red-deep);font-weight:500}
-.placard[hidden]{display:none}
-/* rules */
-.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-.rule{border:1px solid var(--line);border-radius:8px;padding:18px;background:var(--wall-2)}
-.rule .k{font-family:var(--serif);font-size:20px;font-weight:600}
-.rule p{margin:8px 0 0;font-size:14px;color:#D2C6CA}
-.rule .how{margin-top:10px;font-family:var(--mono);font-size:12px;color:var(--muted)}
-/* tables */
-table{width:100%;border-collapse:collapse;font-size:15px}
-th,td{padding:12px 14px;border-bottom:1px solid var(--line-soft);text-align:left;vertical-align:top}
-th{width:230px;color:var(--muted);font-weight:500;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
-.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:28px}
-@media (max-width:820px){.split{grid-template-columns:1fr}}
-.pct{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1}
-/* bounty */
-.bounty{border:1px solid var(--hazard);border-radius:10px;padding:26px;background:linear-gradient(180deg,#1E1710,#171013)}
-.bounty ul{margin:12px 0 0;padding-left:18px;color:#DDD2D6}
-/* footer */
-footer{padding-block:40px 60px;border-top:1px solid var(--line-soft);font-size:13px;color:var(--muted)}
-footer .row{display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between}
-.tape{height:14px;background:repeating-linear-gradient(-45deg,var(--hazard) 0 18px,#111 18px 36px);opacity:.9}
-@media (prefers-reduced-motion:no-preference){.placard{transition:transform .2s ease}.placard:hover{transform:translateY(-2px)}}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0d0e" />
+  <title>SCAM Museum — Smart Contract Attack Archive</title>
+  <meta name="description" content="An educational archive of smart contract attack patterns with manual research intake. No live scam detection or investment promises." />
+  <meta property="og:title" content="SCAM Museum — Smart Contract Attack Archive" />
+  <meta property="og:description" content="Study the failure. Submit a contract for review. SCAM is a meme token; the archive does not automatically detect live scams." />
+  <meta property="og:image" content="https://scam-museum-snowy.vercel.app/assets/scam-museum-promo-v1.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="assets/scam.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{color-scheme:dark;--bg:#0b0d0e;--panel:#111516;--panel2:#151a1b;--stroke:#293132;--text:#eef3ef;--muted:#94a19c;--green:#c2ff4d;--orange:#ff7357;--blue:#85c8ff;--mono:"DM Mono",ui-monospace,monospace;--sans:Manrope,system-ui,sans-serif}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit;text-decoration:none}a:hover{color:var(--green)}button,input,select,textarea{font:inherit}button,a,input,select,textarea{outline-offset:3px}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--green)}::selection{background:var(--green);color:#0b0d0e}.wrap{width:min(1160px,calc(100% - 40px));margin:auto}.mono,.eyebrow,.tag,.status,.token-label,th,.step-no{font-family:var(--mono)}.eyebrow{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--green)}.muted{color:var(--muted)}
+    .topline{border-bottom:1px solid var(--stroke);background:#0f1213}.topline .wrap{min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:12px;font:11px var(--mono);color:var(--muted)}.live{display:inline-flex;align-items:center;gap:8px}.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px #c2ff4d88}.topline a{color:var(--green)}
+    header{position:sticky;top:0;z-index:5;background:#0b0d0eeb;backdrop-filter:blur(16px);border-bottom:1px solid var(--stroke)}.nav{height:68px;display:flex;align-items:center;gap:34px}.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.05em}.brand-mark{width:30px;height:30px;border:1px solid var(--green);border-radius:7px;display:grid;place-items:center;color:var(--green);font:500 15px var(--mono);transform:rotate(-4deg)}.brand span:last-child{font-size:14px}.navlinks{display:flex;gap:25px;margin-left:auto;color:var(--muted);font-size:12px}.navlinks a:hover{color:var(--text)}.nav-cta,.button{border:1px solid var(--stroke);border-radius:5px;padding:10px 15px;background:transparent;color:var(--text);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:.18s ease}.nav-cta:hover,.button:hover{border-color:var(--green);color:var(--green)}.button.primary{background:var(--green);border-color:var(--green);color:#0b0d0e}.button.primary:hover{background:#d5ff86}.button.subtle{background:var(--panel2)}
+    .hero{padding:77px 0 48px;display:grid;grid-template-columns:1.1fr .9fr;gap:54px;align-items:center}.hero h1{font-size:clamp(58px,9.5vw,112px);line-height:.94;letter-spacing:-.085em;margin:15px 0 18px;font-weight:800}.hero h1 i{font-style:normal;color:var(--green)}.hero p{max-width:62ch;color:#bac4bf;font-size:16px}.hero .intro{font-size:18px;color:var(--text);line-height:1.5;max-width:29em}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.hero-visual{min-height:355px;border:1px solid var(--stroke);border-radius:9px;background:radial-gradient(ellipse at 50% 46%,#283a24 0,#18201a 31%,#121718 65%);position:relative;overflow:hidden;display:grid;place-items:center}.hero-visual:before,.hero-visual:after{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:31px 31px;mask-image:linear-gradient(transparent,#000 15%,#000 80%,transparent)}.scan{position:absolute;inset:24px;border:1px solid #67756644;border-radius:50%;transform:scaleX(1.35)}.scan.two{inset:55px;transform:scaleX(1.35) rotate(-18deg)}.specimen{position:relative;z-index:1;width:172px;height:202px;border:1px solid #d0ff6d66;background:linear-gradient(155deg,#1b251b,#101516);clip-path:polygon(12% 0,88% 0,100% 10%,100% 90%,88% 100%,12% 100%,0 90%,0 10%);display:grid;place-items:center;box-shadow:0 0 70px #b8ff3822}.specimen strong{font:800 39px var(--sans);letter-spacing:-.09em;color:var(--green);text-shadow:0 0 35px #b8ff3866}.specimen small{position:absolute;bottom:20px;font:10px var(--mono);letter-spacing:.15em;color:#d2e9a7}.visual-tag{position:absolute;z-index:2;font:10px var(--mono);letter-spacing:.08em;padding:8px 10px;border:1px solid var(--stroke);border-radius:3px;background:#0c1010dd;color:#c5d0ca}.visual-tag.tl{top:19px;left:19px}.visual-tag.br{bottom:19px;right:19px;color:var(--green)}
+    .tokenbar{display:grid;grid-template-columns:1.55fr 1fr 1fr 1fr;border:1px solid var(--stroke);border-radius:7px;background:var(--panel);overflow:hidden;margin:8px 0 20px}.tokenbar>div{padding:17px 19px;border-right:1px solid var(--stroke);min-width:0}.tokenbar>div:last-child{border:0}.token-label{font-size:10px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}.token-value{margin-top:7px;font-size:13px;font-weight:700;overflow-wrap:anywhere}.token-value.address{font:11px var(--mono);color:#d2dbd5}.token-value a{color:var(--green)}.copy{margin-left:7px;border:0;background:none;color:var(--green);font:10px var(--mono);cursor:pointer}
+    .notice{padding:13px 15px;border:1px solid #4d3922;background:#17140e;border-radius:5px;color:#d7cbb3;font-size:12px;margin:0 0 70px}.notice strong{color:#ffd37e;font:10px var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-right:8px}
+    section{padding:73px 0;border-top:1px solid var(--stroke)}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:27px}.section-head h2{font-size:clamp(30px,5vw,49px);line-height:1.12;letter-spacing:-.055em;margin:9px 0}.section-head p{max-width:54ch;margin:0;color:var(--muted);font-size:13px}.catalog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.exhibit{padding:19px;border:1px solid var(--stroke);border-radius:6px;background:linear-gradient(145deg,#121718,#0e1112);min-height:196px}.exhibit-top{display:flex;justify-content:space-between;align-items:center}.tag{font-size:9px;letter-spacing:.08em;color:var(--muted);border:1px solid var(--stroke);padding:4px 7px;border-radius:3px}.tag.archive{color:var(--green);border-color:#3c5730}.exhibit h3{font-size:17px;letter-spacing:-.03em;margin:24px 0 6px}.exhibit p{font-size:12px;color:var(--muted);margin:0}.exhibit .pattern{font:10px var(--mono);color:#c0d0c4}.callout{margin-top:14px;padding:15px 18px;border-left:2px solid var(--blue);background:#101518;color:#aebdc4;font-size:12px}
+    .submit-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}.submit-copy{position:sticky;top:105px}.submit-copy h2{font-size:clamp(34px,4.5vw,53px);line-height:1.06;letter-spacing:-.06em;margin:10px 0 16px}.submit-copy p{font-size:13px;color:var(--muted)}.steps{display:grid;gap:12px;margin-top:24px}.step{display:grid;grid-template-columns:32px 1fr;gap:12px;font-size:12px;color:#aebbb4}.step-no{color:var(--green);font-size:11px;padding-top:2px}.step b{display:block;color:var(--text);font-size:12px;margin-bottom:2px}.form-card{border:1px solid var(--stroke);border-radius:7px;background:var(--panel);overflow:hidden}.form-tabs{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--stroke)}.form-tabs button{padding:15px;border:0;background:#0f1213;color:var(--muted);font:11px var(--mono);cursor:pointer}.form-tabs button[aria-selected="true"]{background:var(--panel);color:var(--green);box-shadow:inset 0 -2px var(--green)}.form-body{padding:23px}.form-body h3{font-size:19px;margin:0 0 5px}.form-body>p{font-size:12px;color:var(--muted);margin:0 0 20px}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:grid;gap:6px}.field.wide{grid-column:1/-1}.field label{font:10px var(--mono);letter-spacing:.07em;color:#bac5bf;text-transform:uppercase}.field input,.field select,.field textarea{width:100%;border:1px solid var(--stroke);border-radius:4px;background:#0b0e0f;color:var(--text);padding:11px 12px;font-size:12px}.field textarea{resize:vertical;min-height:95px}.field input::placeholder,.field textarea::placeholder{color:#64716b}.form-actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:16px}.fineprint{font-size:10px;color:#87928d;margin-top:14px}.form-status{font-size:11px;color:var(--green);min-height:18px}.repo-note{margin:18px 0 0;padding:12px 14px;border:1px solid #35543a;border-radius:4px;background:#101811;color:#c2d7b9;font-size:11px}.repo-note b{color:var(--green)}
+    .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.principle{border:1px solid var(--stroke);background:var(--panel);padding:19px;border-radius:6px}.principle .eyebrow{font-size:9px}.principle h3{font-size:16px;margin:12px 0 5px}.principle p{margin:0;font-size:12px;color:var(--muted)}.ledger{border:1px solid var(--stroke);border-radius:6px;overflow:hidden;background:var(--panel)}.ledger-row{display:grid;grid-template-columns:1.1fr 1fr 1.5fr;gap:15px;padding:13px 17px;border-bottom:1px solid var(--stroke);font-size:11px}.ledger-row:last-child{border:0}.ledger-row.head{font:9px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:#0e1112}.ledger-row .state{color:#ffd37e}.footer{padding:32px 0 48px;border-top:1px solid var(--stroke);font-size:11px;color:var(--muted)}.footer-row{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.footer-links{display:flex;gap:16px}.footer a{color:var(--text)}.footer p{max-width:90ch;font-size:10px}
+    @media(max-width:850px){.hero{grid-template-columns:1fr;gap:28px;padding-top:55px}.hero-visual{min-height:300px}.tokenbar{grid-template-columns:1fr 1fr}.tokenbar>div:nth-child(2){border-right:0}.tokenbar>div:nth-child(-n+2){border-bottom:1px solid var(--stroke)}.catalog-grid{grid-template-columns:repeat(2,1fr)}.submit-layout{grid-template-columns:1fr;gap:26px}.submit-copy{position:static}.principles{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.wrap{width:min(100% - 28px,1160px)}.nav{height:58px;gap:12px}.navlinks{gap:13px;font-size:10px}.navlinks a:nth-child(2){display:none}.nav-cta{padding:8px 10px;font-size:10px}.hero{padding:45px 0 34px}.hero h1{font-size:68px}.hero .intro{font-size:16px}.hero-visual{min-height:260px}.notice{margin-bottom:50px}.tokenbar{grid-template-columns:1fr 1fr}.tokenbar>div{padding:13px}.token-value{font-size:11px}.token-value.address{font-size:9px}.section-head{display:block}.section-head p{margin-top:9px}.catalog-grid{grid-template-columns:1fr}.exhibit{min-height:unset}.submit-layout{gap:22px}.form-body{padding:17px}.field-grid{grid-template-columns:1fr}.field.wide{grid-column:auto}.principles{grid-template-columns:1fr}.ledger-row{grid-template-columns:1fr 1fr}.ledger-row>span:last-child{grid-column:1/-1}.form-actions .button{flex:1}}
+  </style>
 </head>
 <body>
+  <div class="topline"><div class="wrap"><span class="live"><i class="dot"></i> SECURITY RESEARCH ARCHIVE · GITHUB ACCESS REQUIRED FOR SUBMISSIONS</span><a href="https://pump.fun/coin/HvyZwwPJhPp5mxkr48SmGt7b5p2Tqrwzyjf6sT5JpMBV" target="_blank" rel="noreferrer">VIEW TOKEN ↗</a></div></div>
+  <header><nav class="wrap nav" aria-label="Main navigation"><a class="brand" href="#top"><span class="brand-mark">S</span><span>SCAM <span class="muted">/ MUSEUM</span></span></a><div class="navlinks"><a href="#archive">Archive</a><a href="#submit">Submit</a><a href="#standards">Standards</a><a href="#transparency">Transparency</a></div><a class="nav-cta" href="#submit">SUBMIT A CONTRACT <span aria-hidden="true">↗</span></a></nav></header>
+  <main id="top" class="wrap">
+    <section class="hero" style="border:0">
+      <div><div class="eyebrow">Independent security research archive · Solana token</div><h1>SCAM<i>.</i><br/>MUSEUM</h1><p class="intro">A public archive for studying how smart contracts fail — and how to reproduce those failures safely.</p><p>Submit a contract, a suspected vulnerability, or a correction. Each submission is a research lead, not an automatic verdict. We do not scan live tokens or label projects as scams.</p><div class="actions"><a class="button primary" href="#submit">Submit for review <span>↘</span></a><a class="button" href="#archive">Explore attack patterns</a></div></div>
+      <div class="hero-visual" role="img" aria-label="A smart contract specimen inside a digital security archive"><div class="scan"></div><div class="scan two"></div><span class="visual-tag tl">CASE FILE / 001</span><div class="specimen"><strong>SCAM</strong><small>RESEARCH SPECIMEN</small></div><span class="visual-tag br">STATUS: MANUAL REVIEW</span></div>
+    </section>
+    <div class="tokenbar" aria-label="Token information">
+      <div><div class="token-label">Solana mint</div><div class="token-value address" id="mint">HvyZwwPJhPp5mxkr48SmGt7b5p2Tqrwzyjf6sT5JpMBV <button class="copy" id="copyMint" type="button">COPY</button></div></div>
+      <div><div class="token-label">Explorer</div><div class="token-value"><a id="explorerLink" href="https://solscan.io/token/HvyZwwPJhPp5mxkr48SmGt7b5p2Tqrwzyjf6sT5JpMBV" target="_blank" rel="noreferrer">Solscan ↗</a></div></div>
+      <div><div class="token-label">Market page</div><div class="token-value"><a id="pumpLink" href="https://pump.fun/coin/HvyZwwPJhPp5mxkr48SmGt7b5p2Tqrwzyjf6sT5JpMBV" target="_blank" rel="noreferrer">Pump.fun ↗</a></div></div>
+      <div><div class="token-label">Research status</div><div class="token-value">Community archive · early</div></div>
+    </div>
+    <div class="notice"><strong>Token risk</strong> SCAM is a meme token with no intrinsic value or promised returns. It can lose all value. The creator’s initial launch buy was burned; the creator may hold tokens acquired separately. Check current on-chain balances. The token does not provide live scam detection, audit certification, or investment advice.</div>
 
-<div class="notice"><div class="wrap"><b>Notice</b><span>SCAM is a meme token with no intrinsic value and no promise of returns. It can go to zero at any time. The creator holds no supply; the launch buy is burned and the fee wallet is public. Nothing on this site is investment advice or a solicitation to buy. Every exploit shown here was reproduced in an isolated local EVM for defensive research.</span></div></div>
-
-<nav><div class="wrap"><span class="brand">SCAM</span><ul><li><a href="#catalog">Catalog</a></li><li><a href="#rules">Rules</a></li><li><a href="#tokenomics">Tokenomics</a></li><li><a href="#uses">What it's for</a></li><li><a href="#bounty">Bounty</a></li></ul></div></nav>
-
-<main class="wrap">
-  <header class="hero">
-    <div>
-      <div class="eyebrow">Smart Contract Attack Museum</div>
-      <h1>SCAM</h1>
-      <p class="tag">A museum of proven exploits. <em>The coin is the ticket.</em></p>
-      <p class="lede">Twelve contracts went into an automated exploit prover. Seven broke: reentrancy, open vaults, bad accounting, naive oracles, delegatecall hijacks, weak randomness, open initializers. Each one is archived here with the invariant it violated. The five that survived carry a bounty.</p>
-      <div class="cta">
-        <a class="btn primary" id="buyLink" href="#tokenomics">Token not launched yet</a>
-        <a class="btn ghost" href="#catalog">Walk the catalog</a>
+    <section id="archive">
+      <div class="section-head"><div><div class="eyebrow">01 / Attack pattern archive</div><h2>Failure modes, made legible.</h2></div><p>These are educational pattern summaries. They are not findings about any specific deployed token, and they do not certify any contract as safe or unsafe.</p></div>
+      <div class="catalog-grid">
+        <article class="exhibit"><div class="exhibit-top"><span class="tag">ACCESS CONTROL</span><span class="tag archive">PATTERN</span></div><h3>Unrestricted admin paths</h3><p>Privileged operations lack an authorization check, or role changes can be called by anyone.</p></article>
+        <article class="exhibit"><div class="exhibit-top"><span class="tag">CALL ORDER</span><span class="tag archive">PATTERN</span></div><h3>Reentrant state changes</h3><p>External control is handed off before internal accounting is updated or locked.</p></article>
+        <article class="exhibit"><div class="exhibit-top"><span class="tag">ACCOUNTING</span><span class="tag archive">PATTERN</span></div><h3>Broken balance invariants</h3><p>Unchecked arithmetic or inconsistent accounting lets balances diverge from assets.</p></article>
+        <article class="exhibit"><div class="exhibit-top"><span class="tag">ORACLES</span><span class="tag archive">PATTERN</span></div><h3>Manipulable spot prices</h3><p>Single-moment prices can be distorted when protocols use them as trusted collateral values.</p></article>
+        <article class="exhibit"><div class="exhibit-top"><span class="tag">PROXY / STORAGE</span><span class="tag archive">PATTERN</span></div><h3>Unsafe delegate calls</h3><p>Untrusted or mutable code targets can execute in the caller’s storage context.</p></article>
+        <article class="exhibit"><div class="exhibit-top"><span class="tag">INITIALIZATION</span><span class="tag archive">PATTERN</span></div><h3>Repeatable initializers</h3><p>Unprotected setup functions can expose ownership or configuration after deployment.</p></article>
       </div>
-    </div>
-    <figure class="exhibit-a">
-      <img src="assets/scam.png" alt="SCAM token image: the word SCAM in red behind hazard tape, stamped PROVEN" width="512" height="512" />
-      <figcaption class="plaque"><b>Exhibit A · SCAM</b>Launched by a trading bot, 2026.<br/>Creator supply: 0. Bundles: 0.</figcaption>
-    </figure>
-  </header>
+      <div class="callout">A pattern match is not proof of exploitability. Every accepted case should include a scoped environment, a minimal reproduction, impact reasoning, and reviewer notes.</div>
+    </section>
 
-  <div class="token" id="token">
-    <div><div class="k">Mint</div><div class="v mono" id="mint">Not launched yet</div></div>
-    <div><div class="k">Fee wallet</div><div class="v mono" id="feeWallet">Published at launch</div></div>
-    <div><div class="k">Creator supply</div><div class="v">0 — launch buy is burned</div></div>
-    <div><div class="k">The bot's rule</div><div class="v">The bot that launched SCAM never buys or sells it</div></div>
-  </div>
+    <section id="submit">
+      <div class="submit-layout">
+        <div class="submit-copy"><div class="eyebrow">02 / Community intake</div><h2>Bring evidence.<br/>We’ll review it.</h2><p>Use the intake form to prepare a structured GitHub issue. Include only public information and a minimal reproduction. Do not paste private keys, personal data, or exploit instructions for a live system.</p>
+          <div class="steps"><div class="step"><span class="step-no">01</span><div><b>Describe the target</b>Network, address, source link, and whether it is deployed.</div></div><div class="step"><span class="step-no">02</span><div><b>Explain the security question</b>Expected behavior, observed behavior, and safe reproduction details.</div></div><div class="step"><span class="step-no">03</span><div><b>Continue on GitHub</b>Review the generated issue and submit it there. Maintainers triage manually.</div></div></div>
+          <div class="repo-note"><b>Public submissions:</b> this repository is public, and the form prepares a GitHub issue you can review and submit. You’ll need a GitHub account. Do not disclose exploitable details about an unpatched live system in a public issue.</div>
+        </div>
+        <div class="form-card">
+          <div class="form-tabs" role="tablist" aria-label="Submission type"><button type="button" role="tab" aria-selected="true" aria-controls="contractPanel" id="contractTab">CONTRACT REVIEW</button><button type="button" role="tab" aria-selected="false" aria-controls="issuePanel" id="issueTab">SITE / ARCHIVE ISSUE</button></div>
+          <form class="form-body" id="contractPanel" role="tabpanel" aria-labelledby="contractTab">
+            <h3>Submit a contract candidate</h3><p>Request a research review. Submission does not mean a contract is malicious or guaranteed to be featured.</p>
+            <div class="field-grid"><div class="field"><label for="network">Network</label><select id="network" required><option value="Solana">Solana</option><option value="Ethereum / EVM">Ethereum / EVM</option><option value="Other">Other</option></select></div><div class="field"><label for="otherNetwork">Other network (if applicable)</label><input id="otherNetwork" maxlength="100" placeholder="Chain name / version" /></div><div class="field"><label for="deployment">Deployment status</label><select id="deployment" required><option value="Deployed">Deployed</option><option value="Testnet or local only">Testnet or local only</option><option value="Source only / not deployed">Source only / not deployed</option></select></div><div class="field wide"><label for="address">Contract address or repository URL</label><input id="address" maxlength="240" placeholder="Public address or source-code URL" required /></div><div class="field wide"><label for="question">What should reviewers investigate?</label><textarea id="question" maxlength="1200" placeholder="Describe expected behavior, the suspected failure, impact, and safe reproduction context. Do not include secrets." required></textarea></div><div class="field wide"><label for="evidence">Evidence / reproduction link (optional)</label><input id="evidence" maxlength="240" placeholder="Public gist, test, transaction, or documentation URL" /></div></div>
+            <div class="form-actions"><button class="button primary" type="submit">Prepare GitHub issue ↗</button><button class="button subtle" type="button" id="copyContract">Copy issue text</button><span class="form-status" id="contractStatus" aria-live="polite"></span></div><div class="fineprint">The button opens a prefilled issue on GitHub. You can inspect or edit it before submitting. GitHub account and repository access are required.</div>
+          </form>
+          <form class="form-body" id="issuePanel" role="tabpanel" aria-labelledby="issueTab" hidden>
+            <h3>Report a site or archive issue</h3><p>Report a broken link, inaccurate exhibit text, accessibility issue, or correction request.</p>
+            <div class="field-grid"><div class="field"><label for="issueType">Issue type</label><select id="issueType"><option>Incorrect information</option><option>Broken link or page bug</option><option>Accessibility issue</option><option>Other project issue</option></select></div><div class="field"><label for="page">Page or exhibit</label><input id="page" maxlength="160" placeholder="URL, section, or exhibit ID" /></div><div class="field wide"><label for="issueSummary">Summary</label><input id="issueSummary" maxlength="180" placeholder="Short, specific title" required /></div><div class="field wide"><label for="issueDetails">Details</label><textarea id="issueDetails" maxlength="1200" placeholder="What did you expect, what happened, and how can we reproduce it?" required></textarea></div></div>
+            <div class="form-actions"><button class="button primary" type="submit">Prepare GitHub issue ↗</button><button class="button subtle" type="button" id="copyIssue">Copy issue text</button><span class="form-status" id="issueStatus" aria-live="polite"></span></div><div class="fineprint">No private security reports through public issues. Do not include wallet secrets, credentials, or personal information.</div>
+          </form>
+        </div>
+      </div>
+    </section>
 
-  <section id="catalog">
-    <div class="sec-head">
-      <div><div class="eyebrow">Catalog</div><h2>Twelve exhibits, seven broken</h2><p>Catalog numbers are the order the prover ran them. "Unproven" means no reproducible violation was found within the search budget. It does not mean safe.</p></div>
-      <div class="filters" role="group" aria-label="Filter exhibits"><button class="chip" data-f="all" aria-pressed="true">All 12</button><button class="chip" data-f="proven" aria-pressed="false">Proven 7</button><button class="chip" data-f="open" aria-pressed="false">Unproven 5</button></div>
-    </div>
-    <div class="catalog" id="cat">
-      <article class="placard" data-k="proven"><div class="no"><span>SCAM-001</span><span class="stamp proven">PROVEN</span></div><h3>ReentrantVault</h3><div class="class">Reentrancy · CEI violation</div><p><code>withdraw()</code> sends ether with an external <code>call</code> before it zeroes <code>balances[msg.sender]</code>. A <code>receive()</code> that calls <code>withdraw()</code> again drains the float while the balance still reads full. The DAO, 2016, in one function.</p><div class="broke">Broken invariant: <b>vaultSolvent</b></div></article>
-      <article class="placard" data-k="proven"><div class="no"><span>SCAM-002</span><span class="stamp proven">PROVEN</span></div><h3>OpenVault</h3><div class="class">Broken access control</div><p><code>adminWithdraw(to, amount)</code> and <code>setOwner(newOwner)</code> have no <code>onlyOwner</code>. Anyone empties the vault or takes ownership. The most common critical finding in audits, and the cheapest to fix.</p><div class="broke">Broken invariants: <b>ownerUnchanged</b>, <b>vaultSolvent</b></div></article>
-      <article class="placard" data-k="proven"><div class="no"><span>SCAM-003</span><span class="stamp proven">PROVEN</span></div><h3>BadAccounting</h3><div class="class">Integer underflow</div><p><code>unchecked { balanceOf[msg.sender] -= amount; }</code>. Subtracting from zero wraps to 2<sup>256</sup>−1. Solidity 0.8 would have caught it; <code>unchecked</code> turned the check off to save gas.</p><div class="broke">Broken invariant: <b>vaultSolvent</b></div></article>
-      <article class="placard" data-k="proven"><div class="no"><span>SCAM-004</span><span class="stamp proven">PROVEN</span></div><h3>NaiveOracle</h3><div class="class">Price oracle manipulation</div><p>Collateral is valued at the pool's instantaneous spot price. No TWAP, no cap, no delay. A flash loan moves the price for one block and an under-collateralized loan walks out.</p><div class="broke">Broken invariant: <b>protocolSolvent</b></div></article>
-      <article class="placard" data-k="proven"><div class="no"><span>SCAM-005</span><span class="stamp proven">PROVEN</span></div><h3>DelegateVault</h3><div class="class">delegatecall hijack</div><p>The target of <code>delegatecall</code> is caller-supplied. <code>delegatecall</code> runs foreign code against this contract's storage, so the attacker's code overwrites the owner slot. Parity wallet, 2017.</p><div class="broke">Broken invariant: <b>ownerUnchanged</b></div></article>
-      <article class="placard" data-k="proven"><div class="no"><span>SCAM-006</span><span class="stamp proven">PROVEN</span></div><h3>PredictableLottery</h3><div class="class">Weak randomness</div><p>The winning number is <code>keccak256(block.timestamp, block.prevrandao) % n</code>. Everyone in the same block computes the same value. Play only when you win.</p><div class="broke">Broken invariant: <b>houseSolvent</b></div></article>
-      <article class="placard" data-k="proven"><div class="no"><span>SCAM-007</span><span class="stamp proven">PROVEN</span></div><h3>OpenInitializer</h3><div class="class">Unprotected initializer</div><p>Behind a proxy the constructor never runs; <code>initialize(admin)</code> is the constructor. Here it can be called again by anyone, so anyone becomes admin.</p><div class="broke">Broken invariant: <b>adminUninitialized</b></div></article>
-      <article class="placard" data-k="open"><div class="no"><span>SCAM-008</span><span class="stamp open">UNPROVEN</span></div><h3>SafeVault</h3><div class="class">Checks-Effects-Interactions + mutex</div><p>Balance is zeroed before the transfer and a reentrancy guard wraps the function. The prover found no violation within budget.</p><div class="broke">Bounty open</div></article>
-      <article class="placard" data-k="open"><div class="no"><span>SCAM-009</span><span class="stamp open">UNPROVEN</span></div><h3>BoundedOwner</h3><div class="class">Timelock + withdrawal cap</div><p><code>onlyOwner</code>, a two-day timelock and a 10% per-withdrawal cap. No violation found within budget.</p><div class="broke">Bounty open</div></article>
-      <article class="placard" data-k="open"><div class="no"><span>SCAM-010</span><span class="stamp open">UNPROVEN</span></div><h3>LibraryVault</h3><div class="class">Fixed-target delegatecall</div><p>The delegatecall target is immutable and set at deployment. No violation found within budget.</p><div class="broke">Bounty open</div></article>
-      <article class="placard" data-k="open"><div class="no"><span>SCAM-011</span><span class="stamp open">UNPROVEN</span></div><h3>CommitLottery</h3><div class="class">Commit-reveal randomness</div><p>Players commit a hash first and reveal later; the draw uses revealed values. No violation found within budget.</p><div class="broke">Bounty open</div></article>
-      <article class="placard" data-k="open"><div class="no"><span>SCAM-012</span><span class="stamp open">UNPROVEN</span></div><h3>GuardedInitializer</h3><div class="class">initialized guard</div><p>The initializer sets a flag and refuses to run twice. No violation found within budget.</p><div class="broke">Bounty open</div></article>
-    </div>
-  </section>
+    <section id="standards"><div class="section-head"><div><div class="eyebrow">03 / Review standards</div><h2>Careful claims. Safe proofs.</h2></div><p>Research quality comes from reproducibility and honest scope. The archive is not a live detection service, audit firm, or incident-response provider.</p></div><div class="principles"><article class="principle"><div class="eyebrow">01 / Scope</div><h3>Isolated environments</h3><p>Demonstrations should run locally or on a test network. Do not attack live contracts, users, or infrastructure.</p></article><article class="principle"><div class="eyebrow">02 / Evidence</div><h3>Reproducible reasoning</h3><p>Show the relevant code, assumptions, reproduction steps, and impact. A suspicion alone is not a verdict.</p></article><article class="principle"><div class="eyebrow">03 / Disclosure</div><h3>Protect users first</h3><p>Do not post weaponizable details about an unpatched live vulnerability in a public issue. We do not yet offer a confidential intake channel.</p></article></div></section>
 
-  <section id="rules">
-    <div class="sec-head"><div><div class="eyebrow">House rules</div><h2>What makes this not a scam</h2><p>The rules are enforced in code, in the bot that launched the token. Every one of them is something the bot itself checks for when it screens other tokens.</p></div></div>
-    <div class="rules">
-      <div class="rule"><div class="k">Creator holds nothing</div><p>The launch buy is at most 0.05 SOL and is burned right after launch. The bot's screen blocks any token whose creator holds 10% or more.</p><div class="how">launch.ts · burn.ts</div></div>
-      <div class="rule"><div class="k">No bundle, no fake volume</div><p>No wallets buy at creation, no volume bots, no wash trades. The bot's screen blocks any token whose creator bought 5 SOL or more at launch.</p><div class="how">community.ts · creatorInitialBuySol</div></div>
-      <div class="rule"><div class="k">The bot never trades it</div><p>The trading bot that launched SCAM skips its own mint in every path: copy, ensemble, community. No conflict of interest, no self-dealing.</p><div class="how">desk.ts · isOwnMint</div></div>
-      <div class="rule"><div class="k">Fees go somewhere you can see</div><p>Creator fees land in a published wallet. 60% funds bounties, 40% keeps the prover running, 0% buys back the token.</p><div class="how">Fee wallet published at launch</div></div>
-    </div>
-  </section>
-
-  <section id="tokenomics">
-    <div class="sec-head"><div><div class="eyebrow">Tokenomics</div><h2>Mostly not ours to decide</h2><p>pump.fun fixes the supply and the distribution. That leaves one decision: where the creator fees go.</p></div></div>
-    <div class="split">
-      <div class="tablewrap"><table>
-        <tr><th>Total supply</th><td>1,000,000,000, fixed. Mint authority revoked.</td></tr>
-        <tr><th>Distribution</th><td>100% bonding curve. Liquidity locks automatically at graduation.</td></tr>
-        <tr><th>Team, presale, vesting</th><td>None. The platform makes it impossible, which is the point.</td></tr>
-        <tr><th>Launch buy</th><td>≤ 0.05 SOL, burned after launch.</td></tr>
-        <tr><th>Trading fee</th><td>1.25% on the curve (0.30% to creator). 0.25% after graduation.</td></tr>
-      </table></div>
-      <div class="tablewrap"><table>
-        <tr><th>Fee use</th><td></td></tr>
-        <tr><th><span class="pct">60%</span></th><td><b>Bounty pool.</b> Paid in SOL to whoever breaks an unproven exhibit. The harness decides, not us.</td></tr>
-        <tr><th><span class="pct">40%</span></th><td><b>Prover infrastructure.</b> Servers, RPC, data feeds.</td></tr>
-        <tr><th><span class="pct">0%</span></th><td><b>Buybacks, burns, marketing wallets.</b> Buybacks read as price intervention. We don't do them.</td></tr>
-        <tr><th>Not promised</th><td>Price. Listings. Airdrops. Staking yield. Revenue share.</td></tr>
-      </table></div>
-    </div>
-  </section>
-
-  <section id="uses">
-    <div class="sec-head"><div><div class="eyebrow">What it's for</div><h2>Uses, not yields</h2><p>Anything that turns money in into money out is a security or a scam. These are the things a ticket does.</p></div></div>
-    <div class="tablewrap"><table>
-      <tr><th>Submit an exhibit</th><td>Send a contract, or a real incident, as a candidate. If the prover breaks it, it gets a placard with your name and the proof. Submitting burns a small amount of SCAM, so nobody is paid for spam.</td></tr>
-      <tr><th>Break an exhibit</th><td>Produce a proof against one of the five unproven contracts and collect the bounty in SOL. Holding SCAM is not required. Requiring it would make this an investment scheme.</td></tr>
-      <tr><th>Vote on the next wing</th><td>Holders snapshot-vote which vulnerability class the museum proves next: signature replay, flash-loan oracles, bridges. The vote sets the roadmap and pays nothing.</td></tr>
-      <tr><th>Patron wall</th><td>Wallets above a threshold can opt in to appear on the patron wall. That is the whole of what a meme community is: belonging.</td></tr>
-      <tr><th>Self-audit</th><td>The bot's own community screen reads SCAM like any other token, creator share, holder concentration, reply growth, security verdict, and publishes the score. The museum exhibits itself.</td></tr>
-    </table></div>
-  </section>
-
-  <section id="bounty">
-    <div class="bounty">
-      <div class="eyebrow">Bounty</div>
-      <h2>Break one of the five</h2>
-      <p class="muted" style="margin-top:8px">SafeVault, BoundedOwner, LibraryVault, CommitLottery, GuardedInitializer.</p>
-      <ul>
-        <li>Submit an <code>Exploit.sol</code> that passes the harness <code>_prove()</code>, plus reproduction steps.</li>
-        <li>Paid in SOL from the fee pool. If the pool is empty, the founder seeds 0.5 SOL. One payout per target, first valid proof.</li>
-        <li>No token required to participate. Payouts are posted publicly.</li>
-        <li>Isolated local EVM only. Attacking deployed contracts is out of scope and forbidden.</li>
-      </ul>
-    </div>
-  </section>
-</main>
-
-<div class="tape" aria-hidden="true"></div>
-<footer><div class="wrap"><div class="row"><span>SCAM · Smart Contract Attack Museum · 2026</span><span><a href="https://github.com/Kairose-master/MemeCoin">Source</a> · <a href="#" id="pumpLink" hidden>pump.fun</a></span></div><p style="margin-top:14px;max-width:none">No intrinsic value. No promised returns. Can go to zero. Not investment advice. Exploits reproduced in an isolated local EVM for defensive research only.</p></div></footer>
-
-<script>
-(function(){
-  // catalog filter
-  var chips=document.querySelectorAll('.chip'), cards=document.querySelectorAll('.placard');
-  chips.forEach(function(c){c.addEventListener('click',function(){var f=c.dataset.f;chips.forEach(function(x){x.setAttribute('aria-pressed',String(x===c))});cards.forEach(function(p){p.hidden=!(f==='all'||p.dataset.k===f)})})});
-  // token panel from launch.json (filled by launch.ts after launch)
-  fetch('launch.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(j){
-    if(!j||!j.mint) return;
-    var m=document.getElementById('mint'); m.textContent=j.mint;
-    var b=document.createElement('button'); b.className='copy'; b.type='button'; b.textContent='copy';
-    b.addEventListener('click',function(){navigator.clipboard&&navigator.clipboard.writeText(j.mint).then(function(){b.textContent='copied'},function(){b.textContent=j.mint})});
-    m.appendChild(b);
-    if(j.feeWallet){var f=document.getElementById('feeWallet');f.innerHTML='';var a=document.createElement('a');a.href='https://solscan.io/account/'+j.feeWallet;a.textContent=j.feeWallet;f.appendChild(a)}
-    var buy=document.getElementById('buyLink'); buy.href='https://pump.fun/coin/'+j.mint; buy.textContent='View on pump.fun'; buy.target='_blank'; buy.rel='noreferrer';
-    var pl=document.getElementById('pumpLink'); pl.href=buy.href; pl.hidden=false;
-  }).catch(function(){});
-})();
-</script>
+    <section id="transparency"><div class="section-head"><div><div class="eyebrow">04 / Transparency</div><h2>What is live — and what isn’t.</h2></div><p>Only claim a program is active when its operational records and public evidence exist. No bounty or fee-allocation program is represented here as currently running.</p></div><div class="ledger"><div class="ledger-row head"><span>Program</span><span>Status</span><span>Public evidence</span></div><div class="ledger-row"><span>Token launch record</span><span>On-chain</span><span><a href="https://solscan.io/tx/56gtN3pXyotNLcNS2biu1dcWxymL9J7gDVL3TGTo7XEN4rD42zkvumbxchva1QRJhY6VtvZQhJXmgugfBxWSryh2" target="_blank" rel="noreferrer">Launch tx ↗</a> · <a href="https://solscan.io/tx/3DCBiFkvq7RndkhqxCYnHzGLvkTLHH51eJD4BbC7Xr3jzjLWZ1iBXXy1FH4Nv4dwAUECj3b3AoMa1VnWDSwWNduJ" target="_blank" rel="noreferrer">Burn tx ↗</a></span></div><div class="ledger-row"><span>Live contract detection</span><span class="state">Not available</span><span>No automated scanner or verdict service</span></div><div class="ledger-row"><span>Research bounty payouts</span><span class="state">Not active / not funded</span><span>No payout ledger or funded pool published</span></div><div class="ledger-row"><span>Creator-fee 60/40 allocation</span><span class="state">Not operational</span><span>No verified income-and-expense ledger published</span></div></div></section>
+  </main>
+  <footer class="footer"><div class="wrap"><div class="footer-row"><span>SCAM MUSEUM <span class="muted">· COMMUNITY SECURITY ARCHIVE</span></span><div class="footer-links"><a href="https://github.com/Kairose-master/MemeCoin" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://pump.fun/coin/HvyZwwPJhPp5mxkr48SmGt7b5p2Tqrwzyjf6sT5JpMBV" target="_blank" rel="noreferrer">Pump.fun ↗</a><a href="https://solscan.io/token/HvyZwwPJhPp5mxkr48SmGt7b5p2Tqrwzyjf6sT5JpMBV" target="_blank" rel="noreferrer">Solscan ↗</a></div></div><p>SCAM is a meme token with no intrinsic value and no promised returns; its value can fall to zero. The archive provides educational material only and does not detect, certify, audit, or endorse tokens or contracts. Nothing on this site is financial, legal, or security advice.</p></div></footer>
+  <script>
+    (function(){
+      var REPO="https://github.com/Kairose-master/MemeCoin/issues/new";
+      var mint="HvyZwwPJhPp5mxkr48SmGt7b5p2Tqrwzyjf6sT5JpMBV";
+      var copyMint=document.getElementById("copyMint");
+      copyMint.addEventListener("click",function(){navigator.clipboard.writeText(mint).then(function(){copyMint.textContent="COPIED";setTimeout(function(){copyMint.textContent="COPY"},1400)}).catch(function(){copyMint.textContent="SELECT ADDRESS"})});
+      var contractTab=document.getElementById("contractTab"),issueTab=document.getElementById("issueTab"),contractPanel=document.getElementById("contractPanel"),issuePanel=document.getElementById("issuePanel");
+      function selectPanel(which){var isContract=which==="contract";contractTab.setAttribute("aria-selected",String(isContract));issueTab.setAttribute("aria-selected",String(!isContract));contractPanel.hidden=!isContract;issuePanel.hidden=isContract}
+      contractTab.addEventListener("click",function(){selectPanel("contract")});issueTab.addEventListener("click",function(){selectPanel("issue")});
+      function urlFor(title,body){return REPO+"?title="+encodeURIComponent(title)+"&body="+encodeURIComponent(body)}
+      function openIssue(title,body,status){var url=urlFor(title,body);if(url.length>7000){status.textContent="Please shorten the details before continuing.";return null}status.textContent="Issue draft prepared. GitHub access is required to submit.";return url}
+      function contractBody(){return ["## Contract candidate submission","","- Network: "+document.getElementById("network").value+(document.getElementById("otherNetwork").value.trim()?" — "+document.getElementById("otherNetwork").value.trim():""),"- Deployment status: "+document.getElementById("deployment").value,"- Contract address or source URL: "+document.getElementById("address").value.trim(),"- Evidence / reproduction link: "+(document.getElementById("evidence").value.trim()||"Not provided"),"","### Security question","",document.getElementById("question").value.trim(),"","### Safe scope confirmation","I will not attack a live contract, users, or infrastructure. Any reproduction is local or on an authorized test environment.","","### Disclosure reminder","Do not include private keys, credentials, personal data, or weaponizable details about an unpatched live vulnerability."].join("\n")}
+      function issueBody(){return ["## Site / archive issue","","- Issue type: "+document.getElementById("issueType").value,"- Page or exhibit: "+(document.getElementById("page").value.trim()||"Not specified"),"","### Summary","",document.getElementById("issueSummary").value.trim(),"","### Details","",document.getElementById("issueDetails").value.trim()].join("\n")}
+      var contractUrl="",issueUrl="";
+      contractPanel.addEventListener("submit",function(e){e.preventDefault();var s=document.getElementById("contractStatus");contractUrl=openIssue("[Contract submission] "+document.getElementById("address").value.trim(),contractBody(),s);if(contractUrl)window.open(contractUrl,"_blank","noopener,noreferrer")});
+      issuePanel.addEventListener("submit",function(e){e.preventDefault();var s=document.getElementById("issueStatus");issueUrl=openIssue("[Site issue] "+document.getElementById("issueSummary").value.trim(),issueBody(),s);if(issueUrl)window.open(issueUrl,"_blank","noopener,noreferrer")});
+      document.getElementById("copyContract").addEventListener("click",function(){var s=document.getElementById("contractStatus");var body=contractBody();navigator.clipboard.writeText(body).then(function(){s.textContent="Issue text copied. Paste it into GitHub."}).catch(function(){s.textContent="Clipboard unavailable in this browser."})});
+      document.getElementById("copyIssue").addEventListener("click",function(){var s=document.getElementById("issueStatus");var body=issueBody();navigator.clipboard.writeText(body).then(function(){s.textContent="Issue text copied. Paste it into GitHub."}).catch(function(){s.textContent="Clipboard unavailable in this browser."})});
+    })();
+  </script>
 </body>
 </html>

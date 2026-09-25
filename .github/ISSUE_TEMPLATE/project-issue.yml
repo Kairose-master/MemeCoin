@@ -1,0 +1,36 @@
+name: Site or archive issue
+description: Report a website problem, accessibility issue, or correction to the archive.
+title: "[Site issue]: "
+body:
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: Issue type
+      options:
+        - Incorrect information
+        - Broken link or page bug
+        - Accessibility issue
+        - Other project issue
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Page, URL, or exhibit
+    validations:
+      required: false
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details and reproduction steps
+    validations:
+      required: true
+  - type: markdown
+    attributes:
+      value: Do not include credentials, private keys, seed phrases, or personal data. Do not submit weaponizable details about unpatched live vulnerabilities in a public issue.

@@ -1,8 +1,8 @@
 /**
- * SCAM 발행 — PumpPortal Lightning `create`. 정직한 버전만: dev buy 상한 0.05 SOL, 번들 없음, 물량 없음.
+ * Launch SCAM through PumpPortal Lightning `create`. Review all amounts and wallet settings before broadcasting.
  *   npx tsx launch.ts --dev-buy 0.01 --dry-run
  *   npx tsx launch.ts --dev-buy 0.01 --confirm LAUNCH
- * env: PUMPFUN_API_KEY (필수) · PINATA_JWT (선택) · SITE_URL (기본 https://scam-museum-snowy.vercel.app)
+ * env: PUMPFUN_API_KEY (required) · PINATA_JWT (optional) · SITE_URL (default https://scam-museum-snowy.vercel.app)
  */
 import { createHash, generateKeyPairSync } from "node:crypto";
 import { readFileSync, writeFileSync } from "node:fs";
@@ -31,17 +31,17 @@ async function metadataUri(): Promise<string> {
 
 (async () => {
   const key = process.env.PUMPFUN_API_KEY;
-  if (!key && !dry) throw new Error("PUMPFUN_API_KEY 없음");
+  if (!key && !dry) throw new Error("PUMPFUN_API_KEY is required");
   const uri = dry ? `${SITE}/metadata.json (dry)` : await metadataUri();
   const kp = grind(20_000);
   const body = { action: "create", tokenMetadata: { name: meta.name, symbol: meta.symbol, uri }, mint: kp.secretKeyB58, denominatedInSol: "true", amount: devBuy, slippage: 10, priorityFee: 0.0005, pool: "pump" };
   console.log("mint:", kp.publicKey, `(grind tries ${kp.tries})`, "\ndev buy:", devBuy, "SOL\nuri:", uri, "\nmetadata:", JSON.stringify(meta, null, 1));
-  if (dry) { console.log("\n[dry-run] 체인에 아무것도 보내지 않았다"); return; }
-  if (confirm !== "LAUNCH") { console.log("\n발행하려면 --confirm LAUNCH"); return; }
+  if (dry) { console.log("\n[dry-run] Nothing was sent to the blockchain"); return; }
+  if (confirm !== "LAUNCH") { console.log("\nTo launch, pass --confirm LAUNCH"); return; }
   const res = await fetch(`https://pumpportal.fun/api/trade?api-key=${encodeURIComponent(key!)}`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) });
   const text = await res.text(); let j: { signature?: string } = {}; try { j = JSON.parse(text); } catch { /* */ }
   if (!res.ok || !j.signature) throw new Error(`pumpportal ${res.status}: ${text.slice(0, 300)}`);
   const rec = { mint: kp.publicKey, signature: j.signature, ts: new Date().toISOString(), devBuySol: devBuy, uri, feeWallet: process.env.FEE_WALLET ?? null, sha256OfMetadata: createHash("sha256").update(JSON.stringify(meta)).digest("hex") };
   writeFileSync(new URL("../site/launch.json", import.meta.url), JSON.stringify(rec, null, 1));
-  console.log("\nLAUNCHED", rec, "\nhttps://pump.fun/coin/" + rec.mint, "\nhttps://solscan.io/tx/" + rec.signature, "\n→ site/launch.json 을 커밋하고, burn.ts 로 dev buy 를 소각할 것");
+  console.log("\nLAUNCHED", rec, "\nhttps://pump.fun/coin/" + rec.mint, "\nhttps://solscan.io/tx/" + rec.signature, "\n→ Review site/launch.json and burn the launch buy with burn.ts if intended.");
 })().catch((e) => { console.error(e.message); process.exit(1); });

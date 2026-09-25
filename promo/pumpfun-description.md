@@ -1,3 +1,3 @@
-# pump.fun 코인 설명 (500자 제한 고려)
+# Pump.fun description draft
 
-Smart Contract Attack Museum. 12 contracts we proved exploitable with reproducible PoCs: reentrancy, open vaults, bad accounting, naive oracles, delegatecall hijacks, weak randomness, open initializers. Launched by a trading bot as an honest meme — creator holds 0 (launch buy burned), no bundle, no fake volume, and the bot never trades this coin. Fees: 60% bounty pool for breaking the 5 unbroken targets, 40% prover infra, 0% buybacks. No intrinsic value. Can go to zero. Museum: https://scam-museum-snowy.vercel.app
+SCAM is a meme token associated with the Smart Contract Attack Museum, an educational archive of smart-contract attack patterns and research submissions. It does not automatically detect live scams or certify contracts as safe or unsafe. The creator's initial launch buy was burned; the creator may hold tokens acquired separately. No active bounty or fee-allocation program is promised. No intrinsic value or guaranteed returns; the token can go to zero.

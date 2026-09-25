@@ -1,0 +1,56 @@
+name: Contract research candidate
+description: Submit a contract or source repository for educational security research review.
+title: "[Contract submission]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A submission is a research lead, not a verdict. Do not attack live systems. Do not include private keys, credentials, personal data, or weaponizable details about an unpatched live vulnerability.
+  - type: dropdown
+    id: network
+    attributes:
+      label: Network
+      options:
+        - Solana
+        - Ethereum / EVM
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: deployment
+    attributes:
+      label: Deployment status
+      options:
+        - Deployed
+        - Testnet or local only
+        - Source only / not deployed
+    validations:
+      required: true
+  - type: input
+    id: target
+    attributes:
+      label: Public contract address or source URL
+      placeholder: Public address or repository URL
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Security question and safe reproduction context
+      description: State expected behavior, observed behavior, and authorized test conditions. Keep live-target details non-weaponizable.
+    validations:
+      required: true
+  - type: input
+    id: evidence
+    attributes:
+      label: Public evidence or reproduction link
+      placeholder: Test, transaction, documentation, or source link
+    validations:
+      required: false
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope confirmation
+      options:
+        - label: I will not attack a live contract, users, or infrastructure; any reproduction is local or explicitly authorized.
+          required: true
