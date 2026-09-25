@@ -1,6 +1,6 @@
 # SCAM Museum
 
-A playful, educational museum for exploring smart-contract security patterns. Put fictional crypto pitches on trial in SCAM Court, share a verdict card, play three security puzzles, or hold 1 SCAM to reveal an optional bonus exhibit. SCAM is the associated Pump.fun meme token; community submissions receive manual review.
+A playful, educational museum for exploring smart-contract security patterns. Put fictional crypto pitches on trial in SCAM Court, share a verdict card, play three security puzzles, or hold 1 SCAM to unlock three optional curator cases. SCAM is the associated Pump.fun meme token; community submissions receive manual review.
 
 > **Token risk:** SCAM has no intrinsic value or promised returns and can lose all value. This project does not provide live scam detection, audit certification, or investment advice. The creator's initial launch buy was burned; the creator may hold tokens acquired separately. Check current balances on-chain.
 
@@ -9,6 +9,7 @@ A playful, educational museum for exploring smart-contract security patterns. Pu
 | Path | Purpose |
 | --- | --- |
 | `site/` | Static museum site, token links, research intake interface, and risk disclosures. |
+| `api/` | Vercel serverless API for Pump.fun coin lookup and anonymous community vote totals. |
 | `launch/` | Owner-operated PumpPortal launch and SPL token burn scripts. Never commit secrets. |
 | `promo/` | English-only communication drafts and disclosure copy. |
 | `docs/` | Product scope, token facts, and submission/review boundaries. |
@@ -26,7 +27,8 @@ See [the product scope](docs/feature-spec.md) for the exact available features, 
 - The archive contains educational descriptions of common vulnerability patterns. A description is not proof that any named live project is exploitable.
 - Contract and site submissions are prepared as GitHub issues. This repository is public, so visitors can review and submit them with a GitHub account.
 - There is no live token scanner or active bounty pool.
-- The interactive gallery has three fictional puzzles. Holding at least 1 SCAM unlocks one optional bonus exhibit through a read-only Phantom wallet balance check. No signature, transfer, or transaction is requested; this client-side pass is not secure access control or a financial reward.
+- The interactive gallery has three fictional puzzles. Holding at least 1 SCAM unlocks three optional bonus security cases through a read-only Phantom balance check. No signature, transfer, or transaction is requested; this lightweight client-side pass is not secure access control or a financial reward.
+- Pump.fun community pulse polls offer three unverified sentiment choices with counts only and no comments. SCAM holdings do not weight real-coin polls. The vote API requires an Upstash Redis database and Vercel environment variables; follow [the setup guide](docs/community-voting.md) and verify the production API before calling the poll live.
 
 ## Submit a research candidate or issue
 
@@ -50,8 +52,8 @@ Only the token owner should run launch or burn operations after reviewing the co
 
 ## Local preview
 
-The site is static HTML and can be previewed with any static file server from the repository root, with `site/` as the document root. Vercel is configured to serve `site/` as the output directory.
+The page is static HTML and can be previewed with any static file server from the repository root, with `site/` as the document root. Vercel is configured to serve `site/` as the output directory and the root `api/` functions. Local community-vote requests require the same Upstash environment variables as production.
 
 ## Project status
 
-The website distinguishes implemented links and records from proposals. There are no token-holder rewards, revenue share, staking, price support, guaranteed listings, or active bounty payouts. See `docs/tokenomics.md`, `docs/bounty.md`, and `docs/legal.md` before making public claims.
+The website distinguishes implemented links and records from proposals. There are no monetary token-holder rewards, revenue share, staking, price support, guaranteed listings, or active bounty payouts. See `docs/tokenomics.md`, `docs/bounty.md`, and `docs/legal.md` before making public claims.

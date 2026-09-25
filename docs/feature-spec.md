@@ -4,7 +4,7 @@
 
 ## Product purpose
 
-SCAM Museum is a public, playable learning site for exploring general smart-contract failure patterns and accepting community exhibit suggestions and research leads. Its SCAM Court mini-game asks visitors to judge fictional crypto pitches and generates a shareable verdict card. SCAM is also the name/ticker of an associated Pump.fun meme token. The token is not required to play, suggest an exhibit, submit a research lead, or report a site issue; holding at least 1 SCAM only opens an optional bonus exhibit.
+SCAM Museum is a public, playable learning site for exploring general smart-contract failure patterns and accepting community exhibit suggestions and research leads. Its SCAM Court mini-game asks visitors to judge fictional crypto pitches and generates a shareable verdict card. SCAM is also the name/ticker of an associated Pump.fun meme token. The token is not required to play, vote on real-coin community sentiment, suggest an exhibit, submit a research lead, or report a site issue; holding at least 1 SCAM optionally unlocks three extra fictional security cases.
 
 ## Available now
 
@@ -12,7 +12,8 @@ SCAM Museum is a public, playable learning site for exploring general smart-cont
 | --- | --- | --- |
 | SCAM Court | Judge fictional crypto pitches as suspicious, needing receipts, or narrowly supported; create a shareable verdict card. | Fictional education and humor only. No real token or team is accused, and verdicts are not live detection or financial advice. |
 | Play the gallery | Answer three short, fictional smart-contract security puzzles and read the explanation. | Educational toy examples only; not a scanner, audit, or finding about a live project. |
-| Curator Pass | Connect a Phantom Solana wallet and check its balance of the SCAM mint. A balance of at least 1 SCAM reveals one optional bonus exhibit. | Read-only balance lookup; no message signature, token transfer, or transaction. The public address is sent to Solana's public RPC, not to a SCAM Museum backend. The bonus is a lightweight client-side experience, not protected confidential content or a financial reward. |
+| Curator Pass | Connect a Phantom Solana wallet and check its balance of the SCAM mint. A balance of at least 1 SCAM reveals three extra fictional security cases with interactive curator notes. | Read-only balance lookup; no message signature, token transfer, or transaction. The public address is sent to Solana's public RPC, not to a SCAM Museum backend. This lightweight client-side pass is not secure access control or a financial reward. |
+| Pump.fun community pulse | Look up a Pump.fun coin by mint and cast one of three anonymous opinions; see the rolling 30-day counts. | Counts are subjective community sentiment, not a scam verdict, safety rating, or audit. No comments or wallet details are collected. SCAM holdings do not affect real-coin polls. Requires Upstash Redis and Vercel environment configuration; do not describe it as live until the production API responds successfully. |
 | Read the archive | Read short educational summaries of common contract failure patterns. | Summaries are general examples, not verified findings against named deployed contracts. They are not an audit or safety rating. |
 | Submit a research lead | Fill a form that prepares a GitHub issue draft with network, deployment status, public source/address, question, and optional evidence. | A maintainer reviews it manually. GitHub account required to submit. No response time or publication is promised. |
 | Suggest an exhibit or report a site/archive issue | Prepare a GitHub issue proposing a fictional puzzle theme or reporting a correction, broken link, accessibility problem, or site bug. | Suggestions are manually reviewed and are not guaranteed to be published. This is a public issue flow, not confidential vulnerability intake. |
@@ -21,10 +22,11 @@ SCAM Museum is a public, playable learning site for exploring general smart-cont
 ## Explicitly not available
 
 - Automated or real-time scam, rug-pull, or contract detection.
+- Verified one-person-one-vote polls or resistance to coordinated brigading.
 - Contract audits, certification, safety scores, or a verdict that a project is malicious.
 - Automated exploit reproduction, transaction simulation, monitoring, or alerts.
 - A confidential vulnerability intake channel or incident-response service.
-- A funded bounty, guaranteed award, holder reward, staking, airdrop, buyback, or revenue share.
+- A funded bounty, monetary/token reward, staking, airdrop, buyback, or revenue share.
 - Token price support, liquidity commitments, exchange listings, or investment returns.
 
 ## Intake and review workflow
@@ -46,7 +48,7 @@ Issue acceptance, review timing, findings, and publication are not guaranteed. D
 
 ## Token and financial disclosures
 
-SCAM is a speculative meme token that can lose all value. The only current token-linked site feature is an optional client-side bonus exhibit; there are no monetary rewards or promises of return, liquidity, listing, or price outcome. The recorded initial launch buy was burned; this does not prove the creator can never acquire tokens later. Current balances and authorities require fresh on-chain verification.
+SCAM is a speculative meme token that can lose all value. The current token-linked site feature is a read-only Curator Pass that unlocks three optional fictional security cases for wallets holding at least 1 SCAM. The token is not spent, locked, or transferred; this is a lightweight client-side access feature, not a monetary reward. There are no promises of return, liquidity, listing, or price outcome. Real-coin community sentiment polls are open to everyone and are not weighted by SCAM holdings. The recorded initial launch buy was burned; this does not prove the creator can never acquire tokens later. Current balances and authorities require fresh on-chain verification.
 
 ## Change control
 

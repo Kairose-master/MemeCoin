@@ -9,6 +9,7 @@ This is a project policy, not legal advice. Rules for token promotion, financial
 - Disclose material holdings, paid endorsements, conflicts, and treasury arrangements accurately. The initial launch buy was burned; the creator may have acquired tokens separately.
 - Do not make price predictions, guarantee profits, fabricate activity, coordinate wash trading, or conceal paid promotion.
 - Distinguish implemented features and verified transactions from proposals.
+- Describe Pump.fun coin polls as unverified community opinion only; vote counts are not findings that a project is fraudulent or safe.
 
 ## Security research
 
@@ -19,4 +20,4 @@ This is a project policy, not legal advice. Rules for token promotion, financial
 
 ## Current project limitations
 
-There is no live scam scanner, confidential vulnerability intake route, or active bounty program. Public GitHub issues are available for fictional exhibit suggestions, general research candidates, and site corrections; do not use them for confidential vulnerability disclosure.
+There is no live scam scanner, confidential vulnerability intake route, or active bounty program. Community polls can be brigaded and are not one-person-one-vote. Public GitHub issues are available for fictional exhibit suggestions, general research candidates, and site corrections; do not use them for confidential vulnerability disclosure.
