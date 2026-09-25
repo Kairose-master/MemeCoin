@@ -1,6 +1,6 @@
 # SCAM Museum
 
-A playful, educational museum for exploring smart-contract security patterns. Play three fictional puzzles, hold 1 SCAM to reveal an optional bonus exhibit, or suggest a future case. SCAM is the associated Pump.fun meme token; community submissions receive manual review.
+A playful, educational museum for exploring smart-contract security patterns. Put fictional crypto pitches on trial in SCAM Court, share a verdict card, play three security puzzles, or hold 1 SCAM to reveal an optional bonus exhibit. SCAM is the associated Pump.fun meme token; community submissions receive manual review.
 
 > **Token risk:** SCAM has no intrinsic value or promised returns and can lose all value. This project does not provide live scam detection, audit certification, or investment advice. The creator's initial launch buy was burned; the creator may hold tokens acquired separately. Check current balances on-chain.
 

@@ -4,12 +4,13 @@
 
 ## Product purpose
 
-SCAM Museum is a public, playable learning site for exploring general smart-contract failure patterns and accepting community exhibit suggestions and research leads. SCAM is also the name/ticker of an associated Pump.fun meme token. The token is not required to play, suggest an exhibit, submit a research lead, or report a site issue; holding at least 1 SCAM only opens an optional bonus exhibit.
+SCAM Museum is a public, playable learning site for exploring general smart-contract failure patterns and accepting community exhibit suggestions and research leads. Its SCAM Court mini-game asks visitors to judge fictional crypto pitches and generates a shareable verdict card. SCAM is also the name/ticker of an associated Pump.fun meme token. The token is not required to play, suggest an exhibit, submit a research lead, or report a site issue; holding at least 1 SCAM only opens an optional bonus exhibit.
 
 ## Available now
 
 | Capability | What a visitor can do | Current boundary |
 | --- | --- | --- |
+| SCAM Court | Judge fictional crypto pitches as suspicious, needing receipts, or narrowly supported; create a shareable verdict card. | Fictional education and humor only. No real token or team is accused, and verdicts are not live detection or financial advice. |
 | Play the gallery | Answer three short, fictional smart-contract security puzzles and read the explanation. | Educational toy examples only; not a scanner, audit, or finding about a live project. |
 | Curator Pass | Connect a Phantom Solana wallet and check its balance of the SCAM mint. A balance of at least 1 SCAM reveals one optional bonus exhibit. | Read-only balance lookup; no message signature, token transfer, or transaction. The public address is sent to Solana's public RPC, not to a SCAM Museum backend. The bonus is a lightweight client-side experience, not protected confidential content or a financial reward. |
 | Read the archive | Read short educational summaries of common contract failure patterns. | Summaries are general examples, not verified findings against named deployed contracts. They are not an audit or safety rating. |
